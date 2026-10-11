@@ -14,20 +14,17 @@ body {
     font-family: Arial, sans-serif;
 }
 
-/* CONTENEDOR CENTRAL DE LA CONSOLA */
 .psp-container {
     position: relative;
     width: 900px;
 }
 
-/* IMAGEN DE LA PSP */
 .psp-image {
     width: 100%;
     height: auto;
     display: block;
 }
 
-/* RECUADRO PANTALLA LCD (Mantiene su posición exacta de borde a borde) */
 .psp-screen-overlay {
     position: absolute;
     top: 27.2%;
@@ -42,7 +39,6 @@ body {
     align-items: center;
 }
 
-/* FORZAR CONTENIDO DE MEDIA A LLENAR 100% DE LA PANTALLA */
 .psp-screen-overlay img, 
 .psp-screen-overlay video {
     width: 100% !important;
