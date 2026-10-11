@@ -1,4 +1,4 @@
-# 🎮 PSP Dreamcast - Retro Game Launcher
+# 🎮 PSP Dreamcast - Retro Game Launcher 🎀
 
 <div align="center">
 
@@ -31,12 +31,12 @@
   5. *Infinity Nikki*
   6. *Frutiger Aero / Aerowave*
 
-## 🛠️ Built With
+## 💎 Built With
 * **HTML5:** Core structure of the portable console and UI layout.
 * **CSS3:** Advanced styling, Flexbox, custom 3D shadows, and retro aesthetic styling.
 * **JavaScript (Vanilla):** Dynamic scene-switching logic and event listeners.
 
-## 🚀 Getting Started
+## 🦢 Getting Started
 To test or run this project locally on your machine:
 
 1. Clone or download this repository.
