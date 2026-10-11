@@ -33,32 +33,33 @@
             display: block;
         }
 
-        /* PANTALLA LCD PERFECTAMENTE CALIBRADA */
-       .psp-screen-overlay {
-            position: absolute;
-            top: 21.5%;
-            left: 22.8%;
-            width: 54.4%;
-            height: 64.5%;
-            background: #000;
-            overflow: hidden;
-            border-radius: 2px;
-        }
+        /* Pantalla adaptada para cubrir el visor negro exacto */
+.psp-screen-overlay {
+    position: absolute;
+    top: 21.5%;
+    left: 22.8%;
+    width: 54.4%;
+    height: 64.5%;
+    background: #000;
+    overflow: hidden;
+    border-radius: 2px;
+}
 
-        .psp-screen-overlay img, 
-        .psp-screen-overlay video {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            display: block;
-        }
+/* Asegurar que las imágenes y videos llenen la pantalla de lado a lado */
+.psp-screen-overlay img,
+.psp-screen-overlay video {
+    width: 100%;
+    height: 100%;
+    object-fit: fill; /* Cambiado a fill para forzar que ocupe todo el rectángulo si el video es de otra proporción */
+    display: block;
+}
 
-        /* BOTONES TÁCTILES INVISIBLES */
-        .hotspot {
-            position: absolute;
-            cursor: pointer;
-            border-radius: 50%;
-        }
+/* Estilo para que los hotspots de los botones sean interactivos (podes sacarle el background-color cuando termines de ubicaros) */
+.hotspot {
+    position: absolute;
+    cursor: pointer;
+    z-index: 20;
+}
 
         .dpad-left { top: 48%; left: 16%; width: 35px; height: 35px; }
         .dpad-right { top: 48%; left: 22.5%; width: 35px; height: 35px; }
