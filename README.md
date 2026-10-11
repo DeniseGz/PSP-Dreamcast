@@ -2,11 +2,15 @@
 
 <div align="center">
 
-[![HTML5](https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white)](https://developer.mozilla.org/)
-[![CSS3](https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white)](https://developer.mozilla.org/)
-[![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black)](https://developer.mozilla.org/)
+[![HTML5](https://img.shields.io/badge/HTML5-ffb6c1?style=for-the-badge&logo=html5&logoColor=fff)](https://developer.mozilla.org/)
+[![CSS3](https://img.shields.io/badge/CSS3-ff69b4?style=for-the-badge&logo=css3&logoColor=fff)](https://developer.mozilla.org/)
+[![JavaScript](https://img.shields.io/badge/JavaScript-e06d98?style=for-the-badge&logo=javascript&logoColor=fff)](https://developer.mozilla.org/)
+[![VS Code](https://img.shields.io/badge/VS%20Code.dev-d4a373?style=for-the-badge&logo=visualstudiocode&logoColor=fff)](https://vscode.dev/)
+[![Git](https://img.shields.io/badge/Git-ff85a1?style=for-the-badge&logo=git&logoColor=fff)](https://git-scm.com/)
+[![GitHub](https://img.shields.io/badge/GitHub-c77dff?style=for-the-badge&logo=github&logoColor=fff)](https://github.com/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-ff69b4.svg?style=for-the-badge)](LICENSE)
 
+</div>
 *A Coquette/Y2K-themed interactive web portfolio project simulating a custom pink PlayStation Portable (PSP) console.*
 
 </div>
