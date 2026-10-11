@@ -8,7 +8,7 @@ const scenes = [
 ];
 
 let currentIndex = 0;
-let currentVolume = 1.0; // Volumen inicial al 100%
+let currentVolume = 1.0;
 
 function renderScene() {
     const mediaDisplay = document.getElementById('mediaDisplay');
@@ -19,12 +19,15 @@ function renderScene() {
         mediaDisplay.innerHTML = `<img src="${current.src}" alt="Scene" style="width: 100%; height: 100%; object-fit: fill; display: block;">`;
     } else if (current.type === 'video') {
         mediaDisplay.innerHTML = `
-            <video src="${current.src}" autoplay loop playsinline style="width: 100%; height: 100%; object-fit: fill; display: block;"></video>
+            <video src="${current.src}" autoplay loop playsinline muted style="width: 100%; height: 100%; object-fit: fill; display: block;"></video>
         `;
         const videoEl = mediaDisplay.querySelector('video');
         if (videoEl) {
             videoEl.volume = currentVolume;
-            videoEl.play().catch(e => console.log("Autoplay bloqueado o requiere interacción previa:", e));
+            videoEl.muted = false; // Desmutear e intentar reproducir
+            videoEl.play().catch(err => {
+                console.log("Reproducción bloqueada por el navegador, esperando interacción:", err);
+            });
         }
     }
 }
@@ -39,29 +42,32 @@ function prevScene() {
     renderScene();
 }
 
-// Funciones vinculadas a los botones de volumen
 function volumeUp() {
     currentVolume = Math.min(1.0, currentVolume + 0.1);
     const videoEl = document.querySelector('#mediaDisplay video');
     if (videoEl) videoEl.volume = currentVolume;
-    console.log(`Volumen: ${Math.round(currentVolume * 100)}%`);
 }
 
 function volumeDown() {
     currentVolume = Math.max(0.0, currentVolume - 0.1);
     const videoEl = document.querySelector('#mediaDisplay video');
     if (videoEl) videoEl.volume = currentVolume;
-    console.log(`Volumen: ${Math.round(currentVolume * 100)}%`);
 }
 
-// Inicializar al cargar la página de forma segura
-if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', renderScene);
-} else {
+// Inicializar
+document.addEventListener('DOMContentLoaded', () => {
     renderScene();
-}
+});
 
-// Navegación con teclado (Flechas)
+// Forzar reproducción al primer clic en la pantalla si se trababa
+document.addEventListener('click', () => {
+    const videoEl = document.querySelector('#mediaDisplay video');
+    if (videoEl && videoEl.paused) {
+        videoEl.play().catch(e => console.log(e));
+    }
+}, { once: true });
+
+// Navegación con teclado
 document.addEventListener('keydown', (e) => {
     if (e.key === 'ArrowRight' || e.key === 'ArrowDown') nextScene();
     if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') prevScene();
