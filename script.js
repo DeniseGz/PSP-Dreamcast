@@ -24,7 +24,7 @@ function renderScene() {
         const videoEl = mediaDisplay.querySelector('video');
         if (videoEl) {
             videoEl.volume = currentVolume;
-            videoEl.play().catch(e => console.log("Autoplay bloqueado:", e));
+            videoEl.play().catch(e => console.log("Reproducción automática pendiente de interacción:", e));
         }
     }
 }
@@ -51,10 +51,18 @@ function volumeDown() {
     if (videoEl) videoEl.volume = currentVolume;
 }
 
-// Inicializar al cargar la página
+// Inicializar al cargar de forma segura
 document.addEventListener('DOMContentLoaded', () => {
     renderScene();
 });
+
+// Desbloquear videos con cualquier primer clic si el navegador se pone terco
+document.addEventListener('click', () => {
+    const videoEl = document.querySelector('#mediaDisplay video');
+    if (videoEl && videoEl.paused) {
+        videoEl.play().catch(e => console.log(e));
+    }
+}, { once: true });
 
 // Navegación con teclado (Flechas)
 document.addEventListener('keydown', (e) => {
