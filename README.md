@@ -24,12 +24,12 @@
 * **Skeuomorphic Retro Design:** Custom pink pastel chassis, physical button styling, and a retro LCD screen with immersive borders.
 * **Interactive Navigation:** Switch between scenes seamlessly using the on-screen D-pad, action buttons (`✕`, `○`), or the bottom quick-selection tabs.
 * **6 Curated Universes:**
-  1. *NieR:Automata* (A2)
-  2. *Resident Evil* (Leon S. Kennedy)
-  3. *Elden Ring* (Campfire Zone)
+  1. *NieR:Automata* 
+  2. *Resident Evil* 
+  3. *Cozy Knight & Dragon*
   4. *Spyro The Dragon*
   5. *Infinity Nikki*
-  6. *Frutiger Aero / Aerowave*
+  6. *Aquarium*
 
 ## 💎 Built With
 * **HTML5:** Core structure of the portable console and UI layout.
