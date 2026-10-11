@@ -23,7 +23,8 @@
 
         .psp-container {
             position: relative;
-            width: 900px;
+            width: 850px;
+            max-width: 95vw;
         }
 
         .psp-image {
@@ -32,16 +33,17 @@
             display: block;
         }
 
-        /* PANTALLA LCD AMPLIADA PARA CUBRIR TODO EL RECTÁNGULO NEGRO */
+        /* PANTALLA LCD CON BORDE ROJO TEMPORAL PARA UBICARLA PERFECTO */
         .psp-screen-overlay {
             position: absolute;
-            top: 23%;
-            left: 26%;
-            width: 48%;
-            height: 52%;
+            top: 27.2%;
+            left: 29.5%;
+            width: 42.2%;
+            height: 42.5%;
             background: #000;
+            border: 3px solid red; /* <- Esto nos va a mostrar el límite exacto */
             overflow: hidden;
-            border-radius: 4px;
+            border-radius: 2px;
         }
 
         .psp-screen-overlay img, 
