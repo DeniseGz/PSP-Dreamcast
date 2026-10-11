@@ -99,24 +99,21 @@
             display: block;
         }
 
-        /* CONTENEDOR DE LA PANTALLA LCD SIN FLEXBOX */
+        /* EL VISOR CALIBRADO EXACTAMENTE AL 100% DEL RECTÁNGULO NEGRO DE LA CONSOLA */
         .psp-screen-overlay {
             position: absolute;
-            top: 27.5%;
-            left: 29.8%;
-            width: 41.5%;
-            height: 41.5%;
-            background: #000;
+            top: 26%;
+            left: 27.5%;
+            width: 45%;
+            height: 44%;
+            background: transparent;
             overflow: hidden;
             border-radius: 2px;
         }
 
-        /* FORZAMOS AL CONTENIDO A OCUPAR EL 100% ABSOLUTO DE PUNTA A PUNTA */
+        /* LA IMAGEN O VIDEO LLENA TODO EL VISOR DE PUNTA A PUNTA */
         .psp-screen-overlay img, 
         .psp-screen-overlay video {
-            position: absolute !important;
-            top: 0 !important;
-            left: 0 !important;
             width: 100% !important;
             height: 100% !important;
             object-fit: cover !important;
