@@ -24,6 +24,7 @@
         .psp-container {
             position: relative;
             width: 900px;
+            display: inline-block;
         }
 
         .psp-image {
@@ -32,7 +33,7 @@
             display: block;
         }
 
-        /* PANTALLA LCD CALIBRADA AL RECTÁNGULO NEGRO DE LA CONSOLA */
+        /* CALIBRACIÓN ABSOLUTA DEFINITIVA PARA CUBRIR EL LCD */
         .psp-screen-overlay {
             position: absolute;
             top: 27.5%;
@@ -44,12 +45,11 @@
             border-radius: 2px;
         }
 
-        /* FORZAMOS A QUE CUALQUIER IMAGEN O VIDEO LLENE 100% EL VISOR */
         .psp-screen-overlay img, 
         .psp-screen-overlay video {
             width: 100% !important;
             height: 100% !important;
-            object-fit: fill !important;
+            object-fit: cover !important;
             display: block;
         }
 
@@ -74,12 +74,10 @@
 <body>
 
     <div class="psp-container">
-        <img src="assets/psp-console.png" alt="PSP Console" class="psp-image">
+        <img src="assets/psp-console.png?v=999" alt="PSP Console" class="psp-image">
         
-        <!-- PANTALLA LCD SUPERPUESTA -->
         <div class="psp-screen-overlay" id="mediaDisplay"></div>
 
-        <!-- Botones interactivos -->
         <div class="hotspot dpad-left" onclick="prevScene()"></div>
         <div class="hotspot dpad-right" onclick="nextScene()"></div>
         <div class="hotspot dpad-up" onclick="prevScene()"></div>
@@ -91,6 +89,6 @@
         <div class="hotspot btn-square" onclick="prevScene()"></div>
     </div>
 
-    <script src="script.js"></script>
+    <script src="script.js?v=999"></script>
 </body>
 </html>
