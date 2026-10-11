@@ -5,7 +5,7 @@
 }
 
 body {
-    background-color: #ffffff;
+    background-color: #111;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -25,26 +25,22 @@ body {
     display: block;
 }
 
-/* VISOR LCD AMPLIADO PARA CUBRIR TODO EL RECTÁNGULO NEGRO */
+/* LA PANTALLA CALIBRADA EXACTAMENTE SOBRE EL RECTÁNGULO NEGRO DE TU PNG */
 .psp-screen-overlay {
     position: absolute;
     top: 27.5%;
-    left: 26.5%;
-    width: 48%;
-    height: 41.8%;
-    background: #000;
+    left: 29.8%;
+    width: 41.5%;
+    height: 41.5%;
     overflow: hidden;
     border-radius: 2px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
 }
 
 .psp-screen-overlay img, 
 .psp-screen-overlay video {
     width: 100% !important;
     height: 100% !important;
-    object-fit: cover !important;
+    object-fit: fill !important;
     display: block;
 }
 
