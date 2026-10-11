@@ -8,13 +8,14 @@
 </head>
 <body>
 
-    <!-- Contenedor principal con la foto de la PSP -->
     <div class="psp-container">
+        <!-- Imagen real de la PSP para controlar el tamaño exacto -->
+        <img src="assets/psp-base.png" alt="PSP Console" class="psp-image">
         
-        <!-- PANTALLA LCD (Muestra el video/GIF al 100%) -->
+        <!-- PANTALLA LCD SUPERPUESTA -->
         <div class="psp-screen-overlay" id="mediaDisplay"></div>
 
-        <!-- Botones invisibles sobre la foto para cambiar de escena -->
+        <!-- Botones interactivos -->
         <div class="hotspot dpad-left" onclick="prevScene()"></div>
         <div class="hotspot dpad-right" onclick="nextScene()"></div>
         <div class="hotspot dpad-up" onclick="prevScene()"></div>
