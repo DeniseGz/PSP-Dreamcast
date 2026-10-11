@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PSP - XMB Launcher</title>
+    <title>PSP Pink Portfolio</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -11,60 +11,48 @@
     <!-- Carcasa física de la PSP Rosada -->
     <div class="psp-shell">
         
-        <!-- Controles laterales izquierdos -->
+        <!-- Controles esquinas transparentes -->
+        <div class="shoulder-left">L</div>
+        <div class="shoulder-right">R</div>
+
+        <!-- Controles izquierdos -->
         <div class="psp-left-controls">
             <div class="d-pad">
-                <div class="d-btn d-up">▲</div>
-                <div class="d-btn d-left">◀</div>
+                <button class="d-btn d-up" onclick="prevScene()">▲</button>
+                <button class="d-btn d-left" onclick="prevScene()">◀</button>
                 <div class="d-btn d-center"></div>
-                <div class="d-btn d-right">▶</div>
-                <div class="d-btn d-down">▼</div>
+                <button class="d-btn d-right" onclick="nextScene()">▶</button>
+                <button class="d-btn d-down" onclick="nextScene()">▼</button>
             </div>
             <div class="analog-stick"></div>
         </div>
 
-        <!-- PANTALLA LCD PRINCIPAL (Interfaz XMB) -->
-        <div class="psp-screen" id="gameViewport">
-            <!-- Fondo de ondas XMB y Menú superior dinámico -->
-            <div class="xmb-header">
-                <div class="xmb-icon" data-category="settings">⚙️</div>
-                <div class="xmb-icon" data-category="photo">🖼️</div>
-                <div class="xmb-icon" data-category="music">🎵</div>
-                <div class="xmb-icon active" data-category="game">🎮</div>
-                <div class="xmb-icon" data-category="network">🌐</div>
-                <div class="xmb-icon" data-category="extras">✨</div>
-            </div>
-
-            <!-- Contenido central dinámico de la escena (Acá van los juegos, GIFs o videos) -->
-            <div class="xmb-content-display">
-                <h1 id="gameTitle">NieR:Automata - A2</h1>
-                <p id="gameDesc">Cargando universo...</p>
-            </div>
-
-            <div class="xmb-footer-hint">Usa la cruceta ◀ ▶ para navegar entre los 6 mundos</div>
+        <!-- PANTALLA LCD (100% Ocupada por el video/GIF) -->
+        <div class="psp-screen" id="pspScreen">
+            <div id="mediaDisplay" class="media-full"></div>
         </div>
 
-        <!-- Controles laterales derechos (Botones de acción clásicos) -->
+        <!-- Controles derechos -->
         <div class="psp-right-controls">
             <div class="action-buttons">
-                <button class="psp-btn btn-triangle">▲</button>
-                <button class="psp-btn btn-square">■</button>
-                <button class="psp-btn btn-circle">◯</button>
-                <button class="psp-btn btn-cross">✕</button>
+                <button class="psp-btn btn-triangle" onclick="nextScene()">▲</button>
+                <button class="psp-btn btn-square" onclick="prevScene()">■</button>
+                <button class="psp-btn btn-circle" onclick="nextScene()">◯</button>
+                <button class="psp-btn btn-cross" onclick="prevScene()">✕</button>
             </div>
             <div class="power-hold-indicators">
-                <span class="indicator power-on"></span> POWER / HOLD
+                <span class="indicator power-on"></span> POWER
             </div>
         </div>
 
-        <!-- Barra inferior de botones de sistema PSP -->
+        <!-- Barra inferior de botones PSP -->
         <div class="psp-bottom-bar">
-            <button class="sys-btn">⌂</button>
+            <button class="sys-btn">HOME</button>
             <button class="sys-btn">- VOL +</button>
             <span class="psp-logo-text">P S P</span>
-            <button class="sys-btn">♫</button>
-            <button class="sys-btn">SELECT</button>
-            <button class="sys-btn">START</button>
+            <button class="sys-btn">♪</button>
+            <button class="sys-btn" onclick="prevScene()">SELECT</button>
+            <button class="sys-btn" onclick="nextScene()">START</button>
         </div>
 
     </div>
