@@ -35,7 +35,7 @@
             -webkit-user-drag: none;
         }
 
-        /* PANTALLA LCD AJUSTADA Y LLENA */
+        /* PANTALLA LCD LLENA */
         .psp-screen-overlay {
             position: absolute;
             top: 21.5%;
@@ -52,62 +52,60 @@
         .psp-screen-overlay video {
             width: 100%;
             height: 100%;
-            object-fit: fill; /* Forzar que cubra todo el espacio sin marcos vacíos */
+            object-fit: fill;
             display: block;
         }
 
-        /* ESTILOS DE HOTSPOTS INTERACTIVOS */
+        /* HOTSPOTS INTERACTIVOS */
         .hotspot {
             position: absolute;
             cursor: pointer;
             z-index: 10;
-            /* background: rgba(255, 0, 0, 0.3); */ /* Descomentá esta línea si querés ver los recuadros rojos para calibrar */
+            /* Sacá las dos barras de la línea de abajo si querés ver los recuadros rojos para probar los clics: */
+            /* background: rgba(255, 0, 0, 0.4); */
         }
 
         /* D-PAD (Flechas Izquierda) */
-        .dpad-left   { top: 48%;   left: 7.5%;  width: 4%; height: 7%; }
-        .dpad-right  { top: 48%;   left: 14.5%; width: 4%; height: 7%; }
-        .dpad-up     { top: 42%;   left: 11%;   width: 4%; height: 7%; }
-        .dpad-down   { top: 54.5%; left: 11%;   width: 4%; height: 7%; }
+        .dpad-left   { top: 48.5%; left: 8.2%;  width: 4%;   height: 6%; }
+        .dpad-right  { top: 48.5%; left: 15.2%; width: 4%;   height: 6%; }
+        .dpad-up     { top: 42.5%; left: 11.7%; width: 4%;   height: 6%; }
+        .dpad-down   { top: 54.5%; left: 11.7%; width: 4%;   height: 6%; }
 
         /* BOTONES DE ACCIÓN (Derecha) */
-        .btn-triangle { top: 42%;   left: 84.8%; width: 4.2%; height: 7%; }
-        .btn-circle   { top: 48.5%; left: 88.5%; width: 4.2%; height: 7%; }
-        .btn-cross    { top: 55%;   left: 84.8%; width: 4.2%; height: 7%; }
-        .btn-square   { top: 48.5%; left: 81.2%; width: 4.2%; height: 7%; }
+        .btn-triangle { top: 42.5%; left: 83.2%; width: 4.5%; height: 6.5%; }
+        .btn-circle   { top: 48.5%; left: 88.2%; width: 4.5%; height: 6.5%; }
+        .btn-cross    { top: 54.5%; left: 83.2%; width: 4.5%; height: 6.5%; }
+        .btn-square   { top: 48.5%; left: 78.2%; width: 4.5%; height: 6.5%; }
 
-        /* BOTONES INFERIORES DE VOLUMEN */
-        .vol-down    { top: 72.8%; left: 34.5%; width: 4%; height: 5%; }
-        .vol-up      { top: 72.8%; left: 39%;   width: 4%; height: 5%; }
+        /* BOTONES DE VOLUMEN (Abajo) */
+        .vol-down    { top: 73%;   left: 34%;   width: 4.5%; height: 5%; }
+        .vol-up      { top: 73%;   left: 38.8%; width: 4.5%; height: 5%; }
     </style>
 </head>
 <body>
 
     <div class="psp-container">
-        <!-- Imagen de la PSP de fondo -->
         <img src="assets/psp-console.png" alt="PSP Console" class="psp-image">
 
-        <!-- Pantalla interactiva -->
         <div class="psp-screen-overlay" id="mediaDisplay"></div>
 
-        <!-- Hotspots D-Pad (Flechas) -->
+        <!-- Flechas D-Pad -->
         <div class="hotspot dpad-left" onclick="prevScene()"></div>
         <div class="hotspot dpad-right" onclick="nextScene()"></div>
         <div class="hotspot dpad-up" onclick="prevScene()"></div>
         <div class="hotspot dpad-down" onclick="nextScene()"></div>
 
-        <!-- Hotspots Botones Figuras -->
+        <!-- Botones de Acción -->
         <div class="hotspot btn-triangle" onclick="nextScene()"></div>
         <div class="hotspot btn-circle" onclick="nextScene()"></div>
         <div class="hotspot btn-cross" onclick="prevScene()"></div>
         <div class="hotspot btn-square" onclick="prevScene()"></div>
 
-        <!-- Hotspots Volumen -->
+        <!-- Botones de Volumen -->
         <div class="hotspot vol-down" onclick="volumeDown()"></div>
         <div class="hotspot vol-up" onclick="volumeUp()"></div>
     </div>
 
-    <!-- Script principal -->
     <script src="script.js"></script>
 </body>
 </html>
