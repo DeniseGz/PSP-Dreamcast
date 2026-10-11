@@ -25,24 +25,23 @@ body {
     display: block;
 }
 
-/* VISOR LCD CALIBRADO AL RECTÁNGULO NEGRO EXACTO */
+/* VISOR LCD AMPLIADO PARA CUBRIR TODO EL RECTÁNGULO NEGRO DE LA CONSOLA */
 .psp-screen-overlay {
     position: absolute;
-    top: 27.5%;
-    left: 29.8%;
-    width: 41.5%;
-    height: 41.5%;
+    top: 25.5%;
+    left: 26.2%;
+    width: 48%;
+    height: 47%;
     background: #000;
     overflow: hidden;
-    border-radius: 2px;
+    border-radius: 4px;
 }
 
-/* FORZAMOS A QUE CUALQUIER IMAGEN, GIF O VIDEO LLENE 100% EL VISOR */
 .psp-screen-overlay img, 
 .psp-screen-overlay video {
     width: 100% !important;
     height: 100% !important;
-    object-fit: fill !important;
+    object-fit: cover !important;
     display: block;
 }
 
