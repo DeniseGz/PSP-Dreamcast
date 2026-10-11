@@ -14,29 +14,24 @@ body {
     font-family: Arial, sans-serif;
 }
 
-/* CONTENEDOR CENTRAL DE LA CONSOLA */
 .psp-container {
     position: relative;
     width: 900px;
 }
 
-/* IMAGEN DE LA PSP CON FILTRO PARA BORRAR EL FONDO BLANCO */
 .psp-image {
     width: 100%;
     height: auto;
     display: block;
-    /* Hace que todo el fondo blanco de la imagen se vuelva completamente transparente */
-    mix-blend-mode: multiply;
-    filter: contrast(1.05);
 }
 
-/* PANTALLA LCD CENTRADA EXACTAMENTE EN EL VISOR */
+/* PANTALLA LCD AJUSTADA AL VISOR NEGRO DE TU IMAGEN ACTUAL */
 .psp-screen-overlay {
     position: absolute;
-    top: 24.5%;
-    left: 31.5%;
-    width: 32.2%;
-    height: 52%;
+    top: 36.5%;
+    left: 37.2%;
+    width: 26.8%;
+    height: 34.5%;
     background: #000;
     overflow: hidden;
     border-radius: 2px;
