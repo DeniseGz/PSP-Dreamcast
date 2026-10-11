@@ -25,17 +25,19 @@ body {
     display: block;
 }
 
-/* LA PANTALLA CALIBRADA EXACTAMENTE SOBRE EL RECTÁNGULO NEGRO DE TU PNG */
+/* VISOR LCD CALIBRADO AL RECTÁNGULO NEGRO EXACTO */
 .psp-screen-overlay {
     position: absolute;
     top: 27.5%;
     left: 29.8%;
     width: 41.5%;
     height: 41.5%;
+    background: #000;
     overflow: hidden;
     border-radius: 2px;
 }
 
+/* FORZAMOS A QUE CUALQUIER IMAGEN, GIF O VIDEO LLENE 100% EL VISOR */
 .psp-screen-overlay img, 
 .psp-screen-overlay video {
     width: 100% !important;
