@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PSP Game Launcher</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Fuente pixelada retro -->
+    <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <!-- Carcasa principal de la PSP -->
+    <div class="psp-shell">
+        
+        <!-- Lado izquierdo: Controles (Cruceta) -->
+        <div class="psp-left-controls">
+            <div class="d-pad">
+                <div class="d-up">▲</div>
+                <div class="d-horizontal">
+                    <span class="d-left">◀</span>
+                    <span class="d-center"></span>
+                    <span class="d-right">▶</span>
+                </div>
+                <div class="d-down">▼</div>
+            </div>
+        </div>
+
+        <!-- Pantalla Central de la PSP -->
+        <div class="psp-screen-container">
+            <div class="psp-screen-header">
+                <span id="gameTitle">Seleccioná un juego...</span>
+                <span class="battery-icon">🔋 100%</span>
+            </div>
+            
+            <!-- Visor de Escenas / Contenido del juego actual -->
+            <div id="gameViewport" class="game-viewport">
+                <div class="welcome-screen">
+                    <h2>PSP ROSITA LAUNCHER</h2>
+                    <p>Usa los botones o flechas para explorar las 6 escenas.</p>
+                </div>
+            </div>
+
+            <div class="psp-screen-footer">
+                <span id="sceneIndicator">Escena 1/6</span>
+            </div>
+        </div>
+
+        <!-- Lado derecho: Botones de Acción (Triángulo, Círculo, Equis, Cuadrado) -->
+        <div class="psp-right-controls">
+            <div class="action-buttons">
+                <button class="btn-triangle">△</button>
+                <div class="btn-middle-row">
+                    <button class="btn-square">□</button>
+                    <button class="btn-circle">○</button>
+                </div>
+                <button class="btn-cross">✕</button>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Barra inferior de navegación de escenas para testing rápido -->
+    <div class="scene-selector-bar">
+        <button class="scene-tab active" data-index="0">1. NieR (A2)</button>
+        <button class="scene-tab" data-index="1">2. Resident Evil (Leon)</button>
+        <button class="scene-tab" data-index="2">3. Elden Ring (Fogata)</button>
+        <button class="scene-tab" data-index="3">4. Spyro</button>
+        <button class="scene-tab" data-index="4">5. Infinity Nikki</button>
+        <button class="scene-tab" data-index="5">6. Frutiger Aero</button>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
