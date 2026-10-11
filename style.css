@@ -16,7 +16,7 @@ body {
 
 .psp-container {
     position: relative;
-    width: 900px;
+    width: 1050px; /* Forzamos un tamaño más grande y claro */
 }
 
 .psp-image {
@@ -25,7 +25,7 @@ body {
     display: block;
 }
 
-/* PANTALLA LCD AMPLIADA A TODO EL VISOR DE LA CONSOLA */
+/* PANTALLA LCD QUE LLENA EL VISOR ROSADO */
 .psp-screen-overlay {
     position: absolute;
     top: 25.5%;
