@@ -54,13 +54,26 @@
     display: block;
 }
 
-/* Estilo para que los hotspots de los botones sean interactivos (podes sacarle el background-color cuando termines de ubicaros) */
-.hotspot {
-    position: absolute;
-    cursor: pointer;
-    z-index: 20;
-}
+<!-- Ejemplo de posicionamiento para las flechas (D-Pad) y botones de volumen -->
+<style>
+    /* Ubicación de ejemplo para los botones interactivos sobre la imagen de la PSP */
+    .dpad-left { top: 48%; left: 19.5%; width: 3%; height: 5%; }
+    .dpad-right { top: 48%; left: 24.5%; width: 3%; height: 5%; }
+    .dpad-up { top: 44.5%; left: 22%; width: 3%; height: 5%; }
+    .dpad-down { top: 51.5%; left: 22%; width: 3%; height: 5%; }
+    
+    .vol-down { top: 73%; left: 34.5%; width: 3%; height: 4%; }
+    .vol-up { top: 73%; left: 38.5%; width: 3%; height: 4%; }
+</style>
 
+<!-- Tus hotspots ya vinculados -->
+<div class="hotspot dpad-left" onclick="prevScene()"></div>
+<div class="hotspot dpad-right" onclick="nextScene()"></div>
+<div class="hotspot dpad-up" onclick="prevScene()"></div>
+<div class="hotspot dpad-down" onclick="nextScene()"></div>
+
+<div class="hotspot vol-down" onclick="volumeDown()"></div>
+<div class="hotspot vol-up" onclick="volumeUp()"></div>
         .dpad-left { top: 48%; left: 16%; width: 35px; height: 35px; }
         .dpad-right { top: 48%; left: 22.5%; width: 35px; height: 35px; }
         .dpad-up { top: 41.5%; left: 19.3%; width: 35px; height: 35px; }
