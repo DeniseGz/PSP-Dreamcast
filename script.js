@@ -1,5 +1,7 @@
 const scenes = [
-    { type: 'image', src: 'assets/nier.jpg' }
+    { type: 'image', src: 'assets/nier.jpg' },
+    { type: 'image', src: 'assets/otra-imagen.jpg' }, // Reemplazá con tus archivos reales
+    { type: 'video', src: 'assets/tu-video.mp4' }
 ];
 
 let currentIndex = 0;
