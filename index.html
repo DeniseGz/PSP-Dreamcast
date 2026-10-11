@@ -24,7 +24,6 @@
         .psp-container {
             position: relative;
             width: 900px;
-            display: inline-block;
         }
 
         .psp-image {
@@ -33,7 +32,7 @@
             display: block;
         }
 
-        /* CALIBRACIÓN ABSOLUTA DEFINITIVA PARA CUBRIR EL LCD */
+        /* PANTALLA LCD */
         .psp-screen-overlay {
             position: absolute;
             top: 27.5%;
@@ -47,77 +46,10 @@
 
         .psp-screen-overlay img, 
         .psp-screen-overlay video {
-            width: 100% !important;
-            height: 100% !important;
-            object-fit: cover !important;
-            display: block;
-        }
-
-        /* BOTONES TÁCTILES INVISIBLES */
-        .hotspot {
-            position: absolute;
-            cursor: pointer;
-            border-radius: 50%;
-        }
-
-        .dpad-left { top: 48%; left: 16%; width: 35px; height: 35px; }
-        .dpad-right { top: 48%; left: 22.5%; width: 35px; height: 35px; }
-        .dpad-up { top: 41.5%; left: 19.3%; width: 35px; height: 35px; }
-        .dpad-down { top: 54.5%; left: 19.3%; width: 35px; height: 35px; }
-
-        .btn-triangle { top: 38.5%; right: 18.5%; width: 35px; height: 35px; }
-        .btn-circle { top: 47.5%; right: 14.5%; width: 35px; height: 35px; }
-        .btn-cross { top: 56.5%; right: 18.5%; width: 35px; height: 35px; }
-        .btn-square { top: 47.5%; right: 22.5%; width: 35px; height: 35px; }
-    </style>
-<style>
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
-
-        body {
-            background-color: #111;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            overflow: hidden;
-            font-family: Arial, sans-serif;
-        }
-
-        .psp-container {
-            position: relative;
-            width: 900px;
-            display: inline-block;
-        }
-
-        .psp-image {
             width: 100%;
-            height: auto;
+            height: 100%;
+            object-fit: cover;
             display: block;
-        }
-
-        /* EL VISOR CALIBRADO EXACTAMENTE AL 100% DEL RECTÁNGULO NEGRO DE LA CONSOLA */
-        .psp-screen-overlay {
-            position: absolute;
-            top: 26%;
-            left: 27.5%;
-            width: 45%;
-            height: 44%;
-            background: transparent;
-            overflow: hidden;
-            border-radius: 2px;
-        }
-
-        /* LA IMAGEN O VIDEO LLENA TODO EL VISOR DE PUNTA A PUNTA */
-        .psp-screen-overlay img, 
-        .psp-screen-overlay video {
-            width: 100% !important;
-            height: 100% !important;
-            object-fit: cover !important;
-            display: block !important;
         }
 
         /* BOTONES TÁCTILES INVISIBLES */
@@ -137,3 +69,25 @@
         .btn-cross { top: 56.5%; right: 18.5%; width: 35px; height: 35px; }
         .btn-square { top: 47.5%; right: 22.5%; width: 35px; height: 35px; }
     </style>
+</head>
+<body>
+
+    <div class="psp-container">
+        <img src="assets/psp-console.png" alt="PSP Console" class="psp-image">
+        
+        <div class="psp-screen-overlay" id="mediaDisplay"></div>
+
+        <div class="hotspot dpad-left" onclick="prevScene()"></div>
+        <div class="hotspot dpad-right" onclick="nextScene()"></div>
+        <div class="hotspot dpad-up" onclick="prevScene()"></div>
+        <div class="hotspot dpad-down" onclick="nextScene()"></div>
+        
+        <div class="hotspot btn-triangle" onclick="nextScene()"></div>
+        <div class="hotspot btn-circle" onclick="nextScene()"></div>
+        <div class="hotspot btn-cross" onclick="prevScene()"></div>
+        <div class="hotspot btn-square" onclick="prevScene()"></div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
