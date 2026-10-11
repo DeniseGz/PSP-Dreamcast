@@ -1,4 +1,4 @@
-# 🎮 PSP Rosita - Retro Game Launcher
+# 🎮 PSP Dreamcast - Retro Game Launcher
 
 <div align="center">
 
@@ -11,14 +11,14 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-ff69b4.svg?style=for-the-badge)](LICENSE)
 
 </div>
-*A Coquette/Y2K-themed interactive web portfolio project simulating a custom pink PlayStation Portable (PSP) console.*
+*A Y2K-themed interactive web  simulator custom pink PlayStation Portable (PSP) console.*
 
 </div>
 
 ---
 
 ## 🌸 Overview
-**PSP Rosita** is a front-end portfolio project built with vanilla web technologies. It blends retro nostalgia (inspired by classic portable consoles) with a soft pastel Y2K aesthetic, allowing users to interactively navigate through 6 distinct virtual gaming scenes.
+**PSP Dreamcast** is a front-end portfolio project built with vanilla web technologies. It blends retro nostalgia (inspired by classic portable consoles) with a soft pastel Y2K aesthetic, allowing users to interactively navigate through 6 distinct virtual gaming scenes.
 
 ## ✨ Features
 * **Skeuomorphic Retro Design:** Custom pink pastel chassis, physical button styling, and a retro LCD screen with immersive borders.
