@@ -16,15 +16,14 @@ function renderScene() {
     const current = scenes[currentIndex];
 
     if (current.type === 'image') {
-        mediaDisplay.innerHTML = `<img src="${current.src}" alt="Scene" style="width: 100%; height: 100%; object-fit: cover; display: block;">`;
+        mediaDisplay.innerHTML = `<img src="${current.src}" alt="Scene" style="width: 100%; height: 100%; object-fit: fill; display: block;">`;
     } else if (current.type === 'video') {
         mediaDisplay.innerHTML = `
-            <video src="${current.src}" autoplay loop playsinline style="width: 100%; height: 100%; object-fit: cover; display: block;"></video>
+            <video src="${current.src}" autoplay loop playsinline style="width: 100%; height: 100%; object-fit: fill; display: block;"></video>
         `;
         const videoEl = mediaDisplay.querySelector('video');
         if (videoEl) {
             videoEl.volume = currentVolume;
-            // Intentar reproducir con sonido asegurado
             videoEl.play().catch(e => console.log("Autoplay bloqueado o requiere interacción previa:", e));
         }
     }
@@ -55,10 +54,12 @@ function volumeDown() {
     console.log(`Volumen: ${Math.round(currentVolume * 100)}%`);
 }
 
-// Inicializar al cargar la página
-document.addEventListener('DOMContentLoaded', () => {
+// Inicializar al cargar la página de forma segura
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', renderScene);
+} else {
     renderScene();
-});
+}
 
 // Navegación con teclado (Flechas)
 document.addEventListener('keydown', (e) => {
