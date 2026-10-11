@@ -3,70 +3,27 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PSP - XMB Launcher</title>
+    <title>PSP Pink Portfolio</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <!-- Carcasa física de la PSP Rosada -->
-    <div class="psp-shell">
+    <!-- Contenedor principal con la foto de la PSP -->
+    <div class="psp-container">
         
-        <!-- Controles laterales izquierdos -->
-        <div class="psp-left-controls">
-            <div class="d-pad">
-                <div class="d-btn d-up">▲</div>
-                <div class="d-btn d-left">◀</div>
-                <div class="d-btn d-center"></div>
-                <div class="d-btn d-right">▶</div>
-                <div class="d-btn d-down">▼</div>
-            </div>
-            <div class="analog-stick"></div>
-        </div>
+        <!-- PANTALLA LCD (Muestra el video/GIF al 100%) -->
+        <div class="psp-screen-overlay" id="mediaDisplay"></div>
 
-        <!-- PANTALLA LCD PRINCIPAL (Interfaz XMB) -->
-        <div class="psp-screen" id="gameViewport">
-            <!-- Fondo de ondas XMB y Menú superior dinámico -->
-            <div class="xmb-header">
-                <div class="xmb-icon" data-category="settings">⚙️</div>
-                <div class="xmb-icon" data-category="photo">🖼️</div>
-                <div class="xmb-icon" data-category="music">🎵</div>
-                <div class="xmb-icon active" data-category="game">🎮</div>
-                <div class="xmb-icon" data-category="network">🌐</div>
-                <div class="xmb-icon" data-category="extras">✨</div>
-            </div>
-
-            <!-- Contenido central dinámico de la escena (Acá van los juegos, GIFs o videos) -->
-            <div class="xmb-content-display">
-                <h1 id="gameTitle">NieR:Automata - A2</h1>
-                <p id="gameDesc">Cargando universo...</p>
-            </div>
-
-            <div class="xmb-footer-hint">Usa la cruceta ◀ ▶ para navegar entre los 6 mundos</div>
-        </div>
-
-        <!-- Controles laterales derechos (Botones de acción clásicos) -->
-        <div class="psp-right-controls">
-            <div class="action-buttons">
-                <button class="psp-btn btn-triangle">▲</button>
-                <button class="psp-btn btn-square">■</button>
-                <button class="psp-btn btn-circle">◯</button>
-                <button class="psp-btn btn-cross">✕</button>
-            </div>
-            <div class="power-hold-indicators">
-                <span class="indicator power-on"></span> POWER / HOLD
-            </div>
-        </div>
-
-        <!-- Barra inferior de botones de sistema PSP -->
-        <div class="psp-bottom-bar">
-            <button class="sys-btn">⌂</button>
-            <button class="sys-btn">- VOL +</button>
-            <span class="psp-logo-text">P S P</span>
-            <button class="sys-btn">♫</button>
-            <button class="sys-btn">SELECT</button>
-            <button class="sys-btn">START</button>
-        </div>
-
+        <!-- Botones invisibles sobre la foto para cambiar de escena -->
+        <div class="hotspot dpad-left" onclick="prevScene()"></div>
+        <div class="hotspot dpad-right" onclick="nextScene()"></div>
+        <div class="hotspot dpad-up" onclick="prevScene()"></div>
+        <div class="hotspot dpad-down" onclick="nextScene()"></div>
+        
+        <div class="hotspot btn-triangle" onclick="nextScene()"></div>
+        <div class="hotspot btn-circle" onclick="nextScene()"></div>
+        <div class="hotspot btn-cross" onclick="prevScene()"></div>
+        <div class="hotspot btn-square" onclick="prevScene()"></div>
     </div>
 
     <script src="script.js"></script>
