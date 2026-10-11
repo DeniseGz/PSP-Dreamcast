@@ -35,16 +35,16 @@
             -webkit-user-drag: none;
             position: relative;
             z-index: 2;
-            pointer-events: none; /* Permite que los clics atraviesen si algo se solapa */
+            pointer-events: none;
         }
 
-        /* PANTALLA LCD COMPLETA (Sin márgenes negros) */
+        /* PANTALLA LCD EXACTA Y AJUSTADA AL MARCO NEGRO */
         .psp-screen-overlay {
             position: absolute;
-            top: 20%;
+            top: 21.2%;
             left: 22.5%;
             width: 55%;
-            height: 65%;
+            height: 65.2%;
             background: #000;
             overflow: hidden;
             border-radius: 2px;
@@ -55,68 +55,66 @@
         .psp-screen-overlay video {
             width: 100% !important;
             height: 100% !important;
-            object-fit: fill !important; /* Estira la imagen/video a todo el marco */
+            object-fit: fill !important;
             display: block;
         }
 
-        /* HOTSPOTS CON LUZ NEÓN BLANCA AL ROZAR (HOVER) */
+        /* HOTSPOTS CON NEÓN BLANCO PURO (Inmunes a extensiones oscuras) */
         .hotspot {
             position: absolute;
             cursor: pointer;
-            z-index: 999; /* Por encima de todo para garantizar el clic */
-            background: transparent;
-            transition: all 0.15s ease-in-out;
+            z-index: 999;
+            background: transparent !important;
             border-radius: 50%;
+            transition: background 0.1s ease, box-shadow 0.1s ease;
         }
 
-        /* Luz neón blanca al pasar el cursor */
+        /* Forzar luz blanca brillante al pasar el cursor */
         .hotspot:hover {
-            background: rgba(255, 255, 255, 0.25) !important;
-            box-shadow: 0 0 12px #ffffff, inset 0 0 6px #ffffff !important;
-            border: 1px solid rgba(255, 255, 255, 0.8);
+            background: rgba(255, 255, 255, 0.4) !important;
+            box-shadow: 0 0 15px #ffffff, 0 0 5px #ffffff inset !important;
+            border: 1.5px solid #ffffff !important;
         }
 
         /* D-PAD (Flechas Izquierda) */
-        .dpad-left   { top: 46.5%; left: 7.2%;  width: 5%; height: 7%; border-radius: 6px; }
-        .dpad-right  { top: 46.5%; left: 15.5%; width: 5%; height: 7%; border-radius: 6px; }
-        .dpad-up     { top: 39.5%; left: 11.2%; width: 5%; height: 7%; border-radius: 6px; }
-        .dpad-down   { top: 53.5%; left: 11.2%; width: 5%; height: 7%; border-radius: 6px; }
+        .dpad-left   { top: 46.5%; left: 7.5%;  width: 4.2%; height: 6.5%; border-radius: 4px; }
+        .dpad-right  { top: 46.5%; left: 15.2%; width: 4.2%; height: 6.5%; border-radius: 4px; }
+        .dpad-up     { top: 40.5%; left: 11.3%; width: 4.2%; height: 6.5%; border-radius: 4px; }
+        .dpad-down   { top: 52.5%; left: 11.3%; width: 4.2%; height: 6.5%; border-radius: 4px; }
 
-        /* BOTONES DE ACCIÓN (Derecha) */
-        .btn-triangle { top: 39.5%; left: 82.5%; width: 5.5%; height: 8%; }
-        .btn-circle   { top: 46.5%; left: 88.2%; width: 5.5%; height: 8%; }
-        .btn-cross    { top: 53.5%; left: 82.5%; width: 5.5%; height: 8%; }
-        .btn-square   { top: 46.5%; left: 76.8%; width: 5.5%; height: 8%; }
+        /* BOTONES DE ACCIÓN (Derecha - Alineados con precisión quirúrgica) */
+        .btn-triangle { top: 40.5%; left: 84.5%; width: 4.2%; height: 6.5%; }
+        .btn-circle   { top: 46.5%; left: 89.8%; width: 4.2%; height: 6.5%; }
+        .btn-cross    { top: 52.5%; left: 84.5%; width: 4.2%; height: 6.5%; }
+        .btn-square   { top: 46.5%; left: 79.2%; width: 4.2%; height: 6.5%; }
 
-        /* BOTONES DE VOLUMEN (Abajo) */
-        .vol-down    { top: 72.5%; left: 33.5%; width: 5%; height: 5.5%; border-radius: 20px; }
-        .vol-up      { top: 72.5%; left: 38.5%; width: 5%; height: 5.5%; border-radius: 20px; }
+        /* BOTONES DE VOLUMEN (Abajo a la izquierda de la cruceta central) */
+        .vol-down    { top: 73.2%; left: 34.2%; width: 4.2%; height: 5%; border-radius: 15px; }
+        .vol-up      { top: 73.2%; left: 38.8%; width: 4.2%; height: 5%; border-radius: 15px; }
     </style>
 </head>
 <body>
 
     <div class="psp-container">
-        <!-- Imagen de la consola PSP de fondo -->
         <img src="assets/psp-console.png" alt="PSP Console" class="psp-image">
 
-        <!-- Pantalla interactiva -->
         <div class="psp-screen-overlay" id="mediaDisplay"></div>
 
-        <!-- Hotspots D-Pad (Flechas) -->
-        <div class="hotspot dpad-left" onclick="prevScene()" title="Anterior"></div>
-        <div class="hotspot dpad-right" onclick="nextScene()" title="Siguiente"></div>
-        <div class="hotspot dpad-up" onclick="prevScene()" title="Anterior"></div>
-        <div class="hotspot dpad-down" onclick="nextScene()" title="Siguiente"></div>
+        <!-- Hotspots D-Pad -->
+        <div class="hotspot dpad-left" onclick="prevScene()"></div>
+        <div class="hotspot dpad-right" onclick="nextScene()"></div>
+        <div class="hotspot dpad-up" onclick="prevScene()"></div>
+        <div class="hotspot dpad-down" onclick="nextScene()"></div>
 
         <!-- Hotspots Botones Figuras -->
-        <div class="hotspot btn-triangle" onclick="nextScene()" title="Siguiente"></div>
-        <div class="hotspot btn-circle" onclick="nextScene()" title="Siguiente"></div>
-        <div class="hotspot btn-cross" onclick="prevScene()" title="Anterior"></div>
-        <div class="hotspot btn-square" onclick="prevScene()" title="Anterior"></div>
+        <div class="hotspot btn-triangle" onclick="nextScene()"></div>
+        <div class="hotspot btn-circle" onclick="nextScene()"></div>
+        <div class="hotspot btn-cross" onclick="prevScene()"></div>
+        <div class="hotspot btn-square" onclick="prevScene()"></div>
 
         <!-- Hotspots Volumen -->
-        <div class="hotspot vol-down" onclick="volumeDown()" title="Volumen -"></div>
-        <div class="hotspot vol-up" onclick="volumeUp()" title="Volumen +"></div>
+        <div class="hotspot vol-down" onclick="volumeDown()"></div>
+        <div class="hotspot vol-up" onclick="volumeUp()"></div>
     </div>
 
     <script src="script.js"></script>
