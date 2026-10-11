@@ -14,12 +14,12 @@ function renderScene(index) {
     const item = scenes[index];
     if (item.type === "video") {
         mediaDisplay.innerHTML = `
-            <video autoplay loop playsinline controls style="width:100%; height:100%; object-fit:cover;">
+            <video autoplay loop muted playsinline style="width: 100%; height: 100%; object-fit: cover; display: block;">
                 <source src="${item.src}" type="video/mp4">
             </video>
         `;
     } else {
-        mediaDisplay.innerHTML = `<img src="${item.src}" alt="Scene" style="width:100%; height:100%; object-fit:cover;">`;
+        mediaDisplay.innerHTML = `<img src="${item.src}" alt="Scene" style="width: 100%; height: 100%; object-fit: cover; display: block;">`;
     }
 }
 
