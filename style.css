@@ -14,22 +14,24 @@ body {
     font-family: Arial, sans-serif;
 }
 
-/* CONTENEDOR CON LA IMAGEN BASE DE LA PSP */
+/* CONTENEDOR CON LA IMAGEN DE LA PSP */
 .psp-container {
     position: relative;
-    width: 950px;
-    height: 450px;
+    width: 900px;
+    height: 500px;
     background: url('assets/psp-base.png') no-repeat center center;
     background-size: contain;
+    /* Elimina el marco/fondo blanco de la imagen */
+    mix-blend-mode: multiply;
 }
 
-/* PANTALLA CUBIERTA 100% POR EL VIDEO/GIF */
+/* PANTALLA LCD AJUSTADA EXACTAMENTE AL RECUADRO DE LA CONSOLA */
 .psp-screen-overlay {
     position: absolute;
-    top: 27%;
-    left: 31.5%;
-    width: 39.2%;
-    height: 48.5%;
+    top: 26.2%;
+    left: 33.7%;
+    width: 32.5%;
+    height: 47.8%;
     background: #000;
     overflow: hidden;
     border-radius: 4px;
@@ -51,13 +53,13 @@ body {
 }
 
 /* Cruceta izquierda */
-.dpad-left { top: 48%; left: 16%; width: 35px; height: 35px; }
-.dpad-right { top: 48%; left: 22.5%; width: 35px; height: 35px; }
-.dpad-up { top: 41.5%; left: 19.3%; width: 35px; height: 35px; }
-.dpad-down { top: 54.5%; left: 19.3%; width: 35px; height: 35px; }
+.dpad-left { top: 46%; left: 23%; width: 35px; height: 35px; }
+.dpad-right { top: 46%; left: 29.5%; width: 35px; height: 35px; }
+.dpad-up { top: 39.5%; left: 26.2%; width: 35px; height: 35px; }
+.dpad-down { top: 52.5%; left: 26.2%; width: 35px; height: 35px; }
 
-/* Botones derechos (Triángulo, Círculo, Equis, Cuadrado) */
-.btn-triangle { top: 38.5%; right: 18.5%; width: 35px; height: 35px; }
-.btn-circle { top: 47.5%; right: 14.5%; width: 35px; height: 35px; }
-.btn-cross { top: 56.5%; right: 18.5%; width: 35px; height: 35px; }
-.btn-square { top: 47.5%; right: 22.5%; width: 35px; height: 35px; }
+/* Botones derechos */
+.btn-triangle { top: 39.5%; right: 26.2%; width: 35px; height: 35px; }
+.btn-circle { top: 46%; right: 23%; width: 35px; height: 35px; }
+.btn-cross { top: 52.5%; right: 26.2%; width: 35px; height: 35px; }
+.btn-square { top: 46%; right: 29.5%; width: 35px; height: 35px; }
