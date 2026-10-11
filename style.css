@@ -25,7 +25,6 @@ body {
     display: block;
 }
 
-/* VISOR LCD AMPLIADO PARA CUBRIR TODO EL RECTÁNGULO NEGRO DE LA CONSOLA */
 .psp-screen-overlay {
     position: absolute;
     top: 25.5%;
@@ -35,14 +34,6 @@ body {
     background: #000;
     overflow: hidden;
     border-radius: 4px;
-}
-
-.psp-screen-overlay img, 
-.psp-screen-overlay video {
-    width: 100% !important;
-    height: 100% !important;
-    object-fit: cover !important;
-    display: block;
 }
 
 /* BOTONES TÁCTILES INVISIBLES */
