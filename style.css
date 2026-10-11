@@ -2,49 +2,31 @@
     box-sizing: border-box;
     margin: 0;
     padding: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 body {
-    background-color: #1e1e1e;
+    background-color: #2b2b2b;
     display: flex;
     justify-content: center;
     align-items: center;
     min-height: 100vh;
-    font-family: Arial, sans-serif;
+    overflow: hidden;
 }
 
-/* CARCASA ROSA PASTEL EXACTA A LA FOTO */
+/* CARCASA DE LA PSP ROSADA */
 .psp-shell {
-    width: 860px;
-    height: 420px;
-    background: linear-gradient(145deg, #fce7f3, #f472b6, #e879f9);
-    border-radius: 90px;
-    box-shadow: 0 25px 50px rgba(0,0,0,0.5), inset 0 3px 8px rgba(255,255,255,0.8);
+    width: 900px;
+    height: 440px;
+    background: linear-gradient(135deg, #fbcfe8, #f472b6, #db2777);
+    border-radius: 60px;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.6), inset 0 5px 15px rgba(255,255,255,0.6);
     display: grid;
     grid-template-columns: 140px 1fr 140px;
-    grid-template-rows: 1fr 45px;
-    padding: 20px 25px;
+    grid-template-rows: 1fr 50px;
+    padding: 25px;
     position: relative;
 }
-
-/* Gatillos superiores transparentes L y R */
-.shoulder-left, .shoulder-right {
-    position: absolute;
-    top: -12px;
-    width: 120px;
-    height: 25px;
-    background: rgba(255, 255, 255, 0.4);
-    border: 1px solid rgba(255, 255, 255, 0.7);
-    border-radius: 15px 15px 0 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    color: white;
-    font-weight: bold;
-    font-size: 0.8rem;
-}
-.shoulder-left { left: 40px; }
-.shoulder-right { right: 40px; }
 
 /* CONTROLES IZQUIERDOS */
 .psp-left-controls {
@@ -52,60 +34,118 @@ body {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    gap: 25px;
+    gap: 30px;
 }
 
 .d-pad {
     position: relative;
     width: 80px;
     height: 80px;
+    background: #e2e8f0;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.3);
 }
 .d-btn {
     position: absolute;
-    background: #fbcfe8;
-    border: 1px solid #f472b6;
-    color: #db2777;
-    cursor: pointer;
+    background: #cbd5e1;
     display: flex;
     align-items: center;
     justify-content: center;
     font-size: 10px;
+    color: #64748b;
+    cursor: pointer;
 }
-.d-up { top: 0; left: 26px; width: 28px; height: 26px; border-radius: 6px 6px 0 0; }
-.d-down { bottom: 0; left: 26px; width: 28px; height: 26px; border-radius: 0 0 6px 6px; }
-.d-left { left: 0; top: 26px; width: 26px; height: 28px; border-radius: 6px 0 0 6px; }
-.d-right { right: 0; top: 26px; width: 26px; height: 28px; border-radius: 0 6px 6px 0; }
-.d-center { top: 26px; left: 26px; width: 28px; height: 28px; background: #fbcfe8; }
+.d-up { top: 0; left: 25px; width: 30px; height: 26px; border-radius: 4px 4px 0 0; }
+.d-down { bottom: 0; left: 25px; width: 30px; height: 26px; border-radius: 0 0 4px 4px; }
+.d-left { left: 0; top: 25px; width: 26px; height: 30px; border-radius: 4px 0 0 4px; }
+.d-right { right: 0; top: 25px; width: 26px; height: 30px; border-radius: 0 4px 4px 0; }
+.d-center { top: 26px; left: 26px; width: 28px; height: 28px; background: #cbd5e1; }
 
 .analog-stick {
-    width: 50px;
-    height: 50px;
-    background: radial-gradient(circle, #fce7f3 40%, #f472b6 80%);
+    width: 55px;
+    height: 55px;
+    background: radial-gradient(circle, #fce7f3 40%, #cbd5e1 70%);
     border-radius: 50%;
-    box-shadow: inset 0 2px 4px rgba(0,0,0,0.3);
+    box-shadow: inset 0 2px 5px rgba(0,0,0,0.4), 0 4px 6px rgba(0,0,0,0.2);
 }
 
-/* PANTALLA COMPLETA SIN TEXTOS NI NADA */
+/* PANTALLA LCD (INTERFAZ XMB) */
 .psp-screen {
-    background: #000;
-    border: 6px solid #2d2d2d;
-    border-radius: 8px;
-    overflow: hidden;
+    background: linear-gradient(135deg, #ffb3c6, #ff8fa3, #e56b6f);
+    border: 8px solid #1a1a1a;
+    border-radius: 12px;
+    box-shadow: inset 0 0 15px rgba(0,0,0,0.5);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 15px;
     position: relative;
-    width: 100%;
-    height: 100%;
+    overflow: hidden;
 }
 
-.media-full {
-    width: 100%;
-    height: 100%;
+/* Cabecera XMB con iconos flotantes en fila horizontal */
+.xmb-header {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    align-items: center;
+    padding-top: 5px;
 }
 
-.media-full img, .media-full video {
+.xmb-icon {
+    font-size: 1.2rem;
+    opacity: 0.5;
+    transition: 0.3s;
+}
+.xmb-icon.active {
+    font-size: 1.8rem;
+    opacity: 1;
+    transform: scale(1.1);
+    filter: drop-shadow(0 0 8px white);
+}
+
+/* Contenido Central del Visor */
+.xmb-content-display {
+    text-align: center;
+    color: white;
+    text-shadow: 2px 2px 6px rgba(0,0,0,0.8);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    flex-grow: 1;
+}
+
+.xmb-content-display h1 {
+    font-size: 1.8rem;
+    margin-bottom: 8px;
+}
+
+.xmb-content-display p {
+    font-size: 0.95rem;
+    max-width: 320px;
+}
+
+/* Contenedor multimedia para videos o GIFs */
+.media-container {
+    width: 100%;
+    max-height: 140px;
+    overflow: hidden;
+    border-radius: 8px;
+    margin-top: 10px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.5);
+}
+
+.media-container img, .media-container video {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    display: block;
+}
+
+.xmb-footer-hint {
+    font-size: 0.75rem;
+    color: rgba(255,255,255,0.8);
+    text-align: center;
 }
 
 /* CONTROLES DERECHOS */
@@ -114,7 +154,7 @@ body {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    gap: 15px;
+    gap: 20px;
 }
 
 .action-buttons {
@@ -125,58 +165,63 @@ body {
 
 .psp-btn {
     position: absolute;
-    width: 30px;
-    height: 30px;
+    width: 32px;
+    height: 32px;
     border-radius: 50%;
     border: none;
-    background: #fbcfe8;
+    background: #fce7f3;
     color: #db2777;
     font-weight: bold;
+    font-size: 0.9rem;
     cursor: pointer;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    box-shadow: 0 3px 6px rgba(0,0,0,0.3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
-.btn-triangle { top: 0; left: 27px; }
-.btn-square { left: 0; top: 27px; }
-.btn-circle { right: 0; top: 27px; }
-.btn-cross { bottom: 0; left: 27px; }
+.btn-triangle { top: 0; left: 26px; }
+.btn-square { left: 0; top: 26px; }
+.btn-circle { right: 0; top: 26px; }
+.btn-cross { bottom: 0; left: 26px; }
 
 .power-hold-indicators {
     font-size: 0.65rem;
-    color: white;
+    color: #fff;
     display: flex;
     align-items: center;
-    gap: 4px;
+    gap: 5px;
 }
 .indicator {
     width: 6px;
     height: 6px;
-    background: #4ade80;
+    background-color: #4ade80;
     border-radius: 50%;
+    box-shadow: 0 0 5px #4ade80;
 }
 
-/* BARRA INFERIOR */
+/* BARRA INFERIOR DE SISTEMA */
 .psp-bottom-bar {
     grid-column: 1 / 4;
     display: flex;
     justify-content: space-around;
     align-items: center;
-    padding-top: 5px;
+    padding-top: 10px;
 }
 
 .sys-btn {
-    background: rgba(255,255,255,0.4);
-    border: none;
-    color: white;
-    padding: 3px 12px;
-    border-radius: 10px;
+    background: rgba(255,255,255,0.3);
+    border: 1px solid rgba(255,255,255,0.5);
+    color: #fff;
+    padding: 3px 10px;
+    border-radius: 12px;
     font-size: 0.7rem;
     cursor: pointer;
-    font-weight: bold;
 }
 
 .psp-logo-text {
-    color: white;
     font-weight: 900;
-    letter-spacing: 5px;
+    letter-spacing: 4px;
+    color: white;
     font-size: 1.1rem;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.3);
 }
