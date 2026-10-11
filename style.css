@@ -19,23 +19,22 @@ body {
     width: 900px;
 }
 
-/* IMAGEN DE LA PSP CON COLORES REALES (Sin oscurecerse) */
 .psp-image {
     width: 100%;
     height: auto;
     display: block;
 }
 
-/* PANTALLA LCD ENCAJADA MILIMÉTRICAMENTE EN EL VISOR */
+/* PANTALLA LCD AMPLIADA A TODO EL VISOR DE LA CONSOLA */
 .psp-screen-overlay {
     position: absolute;
-    top: 36.5%;
-    left: 37.2%;
-    width: 26.8%;
-    height: 34.5%;
+    top: 25.5%;
+    left: 31.8%;
+    width: 38.5%;
+    height: 50.5%;
     background: #000;
     overflow: hidden;
-    border-radius: 2px;
+    border-radius: 4px;
 }
 
 .psp-screen-overlay img, 
@@ -53,12 +52,12 @@ body {
     border-radius: 50%;
 }
 
-.dpad-left { top: 46%; left: 23%; width: 35px; height: 35px; }
-.dpad-right { top: 46%; left: 29.5%; width: 35px; height: 35px; }
-.dpad-up { top: 39.5%; left: 26.2%; width: 35px; height: 35px; }
-.dpad-down { top: 52.5%; left: 26.2%; width: 35px; height: 35px; }
+.dpad-left { top: 48%; left: 16%; width: 35px; height: 35px; }
+.dpad-right { top: 48%; left: 22.5%; width: 35px; height: 35px; }
+.dpad-up { top: 41.5%; left: 19.3%; width: 35px; height: 35px; }
+.dpad-down { top: 54.5%; left: 19.3%; width: 35px; height: 35px; }
 
-.btn-triangle { top: 39.5%; right: 26.2%; width: 35px; height: 35px; }
-.btn-circle { top: 46%; right: 23%; width: 35px; height: 35px; }
-.btn-cross { top: 52.5%; right: 26.2%; width: 35px; height: 35px; }
-.btn-square { top: 46%; right: 29.5%; width: 35px; height: 35px; }
+.btn-triangle { top: 38.5%; right: 18.5%; width: 35px; height: 35px; }
+.btn-circle { top: 47.5%; right: 14.5%; width: 35px; height: 35px; }
+.btn-cross { top: 56.5%; right: 18.5%; width: 35px; height: 35px; }
+.btn-square { top: 47.5%; right: 22.5%; width: 35px; height: 35px; }
