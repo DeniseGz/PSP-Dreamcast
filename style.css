@@ -52,3 +52,9 @@ body {
 .btn-circle { top: 47.5%; right: 14.5%; width: 35px; height: 35px; }
 .btn-cross { top: 56.5%; right: 18.5%; width: 35px; height: 35px; }
 .btn-square { top: 47.5%; right: 22.5%; width: 35px; height: 35px; }
+
+.hotspot {
+    position: absolute;
+    cursor: pointer;
+    z-index: 10;
+}
