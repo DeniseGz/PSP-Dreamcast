@@ -19,15 +19,12 @@ function renderScene() {
         mediaDisplay.innerHTML = `<img src="${current.src}" alt="Scene" style="width: 100%; height: 100%; object-fit: fill; display: block;">`;
     } else if (current.type === 'video') {
         mediaDisplay.innerHTML = `
-            <video src="${current.src}" autoplay loop playsinline muted style="width: 100%; height: 100%; object-fit: fill; display: block;"></video>
+            <video src="${current.src}" autoplay loop playsinline style="width: 100%; height: 100%; object-fit: fill; display: block;"></video>
         `;
         const videoEl = mediaDisplay.querySelector('video');
         if (videoEl) {
             videoEl.volume = currentVolume;
-            videoEl.muted = false; // Desmutear e intentar reproducir
-            videoEl.play().catch(err => {
-                console.log("Reproducción bloqueada por el navegador, esperando interacción:", err);
-            });
+            videoEl.play().catch(e => console.log("Autoplay bloqueado:", e));
         }
     }
 }
@@ -54,20 +51,12 @@ function volumeDown() {
     if (videoEl) videoEl.volume = currentVolume;
 }
 
-// Inicializar
+// Inicializar al cargar la página
 document.addEventListener('DOMContentLoaded', () => {
     renderScene();
 });
 
-// Forzar reproducción al primer clic en la pantalla si se trababa
-document.addEventListener('click', () => {
-    const videoEl = document.querySelector('#mediaDisplay video');
-    if (videoEl && videoEl.paused) {
-        videoEl.play().catch(e => console.log(e));
-    }
-}, { once: true });
-
-// Navegación con teclado
+// Navegación con teclado (Flechas)
 document.addEventListener('keydown', (e) => {
     if (e.key === 'ArrowRight' || e.key === 'ArrowDown') nextScene();
     if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') prevScene();
