@@ -4,12 +4,76 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PSP Pink Portfolio</title>
-    <link rel="stylesheet" href="style.css">
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: #111;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            overflow: hidden;
+            font-family: Arial, sans-serif;
+        }
+
+        .psp-container {
+            position: relative;
+            width: 900px;
+        }
+
+        .psp-image {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        /* PANTALLA LCD CALIBRADA AL RECTÁNGULO NEGRO DE LA CONSOLA */
+        .psp-screen-overlay {
+            position: absolute;
+            top: 27.5%;
+            left: 29.8%;
+            width: 41.5%;
+            height: 41.5%;
+            background: #000;
+            overflow: hidden;
+            border-radius: 2px;
+        }
+
+        /* FORZAMOS A QUE CUALQUIER IMAGEN O VIDEO LLENE 100% EL VISOR */
+        .psp-screen-overlay img, 
+        .psp-screen-overlay video {
+            width: 100% !important;
+            height: 100% !important;
+            object-fit: fill !important;
+            display: block;
+        }
+
+        /* BOTONES TÁCTILES INVISIBLES */
+        .hotspot {
+            position: absolute;
+            cursor: pointer;
+            border-radius: 50%;
+        }
+
+        .dpad-left { top: 48%; left: 16%; width: 35px; height: 35px; }
+        .dpad-right { top: 48%; left: 22.5%; width: 35px; height: 35px; }
+        .dpad-up { top: 41.5%; left: 19.3%; width: 35px; height: 35px; }
+        .dpad-down { top: 54.5%; left: 19.3%; width: 35px; height: 35px; }
+
+        .btn-triangle { top: 38.5%; right: 18.5%; width: 35px; height: 35px; }
+        .btn-circle { top: 47.5%; right: 14.5%; width: 35px; height: 35px; }
+        .btn-cross { top: 56.5%; right: 18.5%; width: 35px; height: 35px; }
+        .btn-square { top: 47.5%; right: 22.5%; width: 35px; height: 35px; }
+    </style>
 </head>
 <body>
 
     <div class="psp-container">
-        <!-- Imagen de la consola con el nuevo nombre -->
         <img src="assets/psp-console.png" alt="PSP Console" class="psp-image">
         
         <!-- PANTALLA LCD SUPERPUESTA -->
