@@ -38,7 +38,7 @@
             pointer-events: none;
         }
 
-        /* PANTALLA LCD / VIDEO (Calibrada al 100% del marco negro) */
+        /* PANTALLA LCD / VIDEO */
         .psp-screen-overlay {
             position: absolute;
             top: 21.5%;
@@ -59,7 +59,7 @@
             display: block;
         }
 
-        /* EFECTO LINTERNA / NEÓN SUAVE AL PASAR EL CURSOR */
+        /* EFECTO LINTERNA BLANCA SUAVE AL PASAR EL CURSOR */
         .hotspot {
             position: absolute;
             cursor: pointer;
@@ -75,21 +75,19 @@
             border: 1px solid rgba(255, 255, 255, 0.9);
         }
 
-        /* --- COORDENADAS PERFECTAS SOBRE LOS BOTONES --- */
-
         /* D-PAD (Flechas Izquierda) */
         .dpad-left   { top: 46.5%; left: 7.8%;  width: 3.8%; height: 6.2%; border-radius: 4px; }
         .dpad-right  { top: 46.5%; left: 14.8%; width: 3.8%; height: 6.2%; border-radius: 4px; }
         .dpad-up     { top: 41%;   left: 11.3%; width: 3.8%; height: 6.2%; border-radius: 4px; }
         .dpad-down   { top: 52%;   left: 11.3%; width: 3.8%; height: 6.2%; border-radius: 4px; }
 
-        /* BOTONES DE ACCIÓN (Derecha: Triángulo, Círculo, Cruz, Cuadrado) */
+        /* BOTONES DE ACCIÓN (Derecha) */
         .btn-triangle { top: 41%;   left: 84.5%; width: 3.8%; height: 6.2%; }
         .btn-circle   { top: 46.5%; left: 89.8%; width: 3.8%; height: 6.2%; }
         .btn-cross    { top: 52%;   left: 84.5%; width: 3.8%; height: 6.2%; }
         .btn-square   { top: 46.5%; left: 79.2%; width: 3.8%; height: 6.2%; }
 
-        /* BOTONES DE VOLUMEN (Inferiores: VOL- y VOL+) */
+        /* BOTONES DE VOLUMEN (Inferiores) */
         .vol-down    { top: 73.2%; left: 34.2%; width: 3.8%; height: 4.8%; border-radius: 15px; }
         .vol-up      { top: 73.2%; left: 38.8%; width: 3.8%; height: 4.8%; border-radius: 15px; }
     </style>
@@ -97,30 +95,27 @@
 <body>
 
     <div class="psp-container">
-        <!-- Imagen de fondo PSP -->
         <img src="assets/psp-console.png" alt="PSP Console" class="psp-image">
 
-        <!-- Visor multimedia -->
         <div class="psp-screen-overlay" id="mediaDisplay"></div>
 
         <!-- Hotspots D-Pad -->
-        <div class="hotspot dpad-left" onclick="prevScene()" title="Anterior"></div>
-        <div class="hotspot dpad-right" onclick="nextScene()" title="Siguiente"></div>
-        <div class="hotspot dpad-up" onclick="prevScene()" title="Anterior"></div>
-        <div class="hotspot dpad-down" onclick="nextScene()" title="Siguiente"></div>
+        <div class="hotspot dpad-left" onclick="prevScene()"></div>
+        <div class="hotspot dpad-right" onclick="nextScene()"></div>
+        <div class="hotspot dpad-up" onclick="prevScene()"></div>
+        <div class="hotspot dpad-down" onclick="nextScene()"></div>
 
         <!-- Hotspots Botones de Acción -->
-        <div class="hotspot btn-triangle" onclick="nextScene()" title="Siguiente"></div>
-        <div class="hotspot btn-circle" onclick="nextScene()" title="Siguiente"></div>
-        <div class="hotspot btn-cross" onclick="prevScene()" title="Anterior"></div>
-        <div class="hotspot btn-square" onclick="prevScene()" title="Anterior"></div>
+        <div class="hotspot btn-triangle" onclick="nextScene()"></div>
+        <div class="hotspot btn-circle" onclick="nextScene()"></div>
+        <div class="hotspot btn-cross" onclick="prevScene()"></div>
+        <div class="hotspot btn-square" onclick="prevScene()"></div>
 
         <!-- Hotspots Volumen -->
-        <div class="hotspot vol-down" onclick="volumeDown()" title="Volumen -"></div>
-        <div class="hotspot vol-up" onclick="volumeUp()" title="Volumen +"></div>
+        <div class="hotspot vol-down" onclick="volumeDown()"></div>
+        <div class="hotspot vol-up" onclick="volumeUp()"></div>
     </div>
 
-    <!-- Script principal -->
     <script src="script.js"></script>
 </body>
 </html>
