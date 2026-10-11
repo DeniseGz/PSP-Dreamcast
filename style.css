@@ -25,15 +25,16 @@ body {
     display: block;
 }
 
+/* VISOR LCD AJUSTADO AL RECTÁNGULO NEGRO DE LA NUEVA IMAGEN */
 .psp-screen-overlay {
     position: absolute;
-    top: 27.2%;
-    left: 30%;
-    width: 41.2%;
-    height: 48.5%;
+    top: 27.5%;
+    left: 31%;
+    width: 39.5%;
+    height: 41.5%;
     background: #000;
     overflow: hidden;
-    border-radius: 4px;
+    border-radius: 2px;
     display: flex;
     justify-content: center;
     align-items: center;
