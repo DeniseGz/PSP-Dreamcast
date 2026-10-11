@@ -20,30 +20,34 @@ body {
     width: 900px;
 }
 
-/* IMAGEN DE LA CONSOLA CON DIMENSIONES DEFINIDAS */
+/* IMAGEN DE LA PSP */
 .psp-image {
     width: 100%;
     height: auto;
     display: block;
 }
 
-/* PANTALLA LCD AJUSTADA AL VISOR ROSADO */
+/* RECUADRO PANTALLA LCD (Mantiene su posición exacta de borde a borde) */
 .psp-screen-overlay {
     position: absolute;
-    top: 25.5%;
-    left: 31.8%;
-    width: 38.5%;
-    height: 50.5%;
+    top: 27.2%;
+    left: 30%;
+    width: 41.2%;
+    height: 48.5%;
     background: #000;
     overflow: hidden;
     border-radius: 4px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
+/* FORZAR CONTENIDO DE MEDIA A LLENAR 100% DE LA PANTALLA */
 .psp-screen-overlay img, 
 .psp-screen-overlay video {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
     display: block;
 }
 
