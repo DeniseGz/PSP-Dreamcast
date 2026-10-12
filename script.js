@@ -16,15 +16,13 @@ function renderScene() {
     const current = scenes[currentIndex];
 
     if (current.type === 'image') {
-        mediaDisplay.innerHTML = `<img src="${current.src}" alt="Scene" style="width: 100%; height: 100%; object-fit: fill; display: block;">`;
+        mediaDisplay.innerHTML = `<img src="${current.src}" alt="Scene">`;
     } else if (current.type === 'video') {
-        mediaDisplay.innerHTML = `
-            <video src="${current.src}" autoplay loop playsinline style="width: 100%; height: 100%; object-fit: fill; display: block;"></video>
-        `;
+        mediaDisplay.innerHTML = `<video src="${current.src}" autoplay loop playsinline></video>`;
         const videoEl = mediaDisplay.querySelector('video');
         if (videoEl) {
             videoEl.volume = currentVolume;
-            videoEl.play().catch(e => console.log("Reproducción pendiente de interacción:", e));
+            videoEl.play().catch(e => console.log(e));
         }
     }
 }
