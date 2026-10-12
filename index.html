@@ -5,120 +5,125 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PSP Dreamcast</title>
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            background-color: #0d0d0d;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
-            overflow: hidden;
-            font-family: sans-serif;
-        }
-
-        .psp-container {
-            position: relative;
-            width: 850px;
-            max-width: 95vw;
-        }
-
-        .psp-image {
-            width: 100%;
-            height: auto;
-            display: block;
-            user-select: none;
-            -webkit-user-drag: none;
-            position: relative;
-            z-index: 2;
-            pointer-events: none; /* Permite que los clics atraviesen si algo se solapa */
-        }
-
-        /* PANTALLA LCD COMPLETA (Sin márgenes negros) */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { background-color: #0d0d0d; display: flex; justify-content: center; align-items: center; min-height: 100vh; overflow: hidden; font-family: sans-serif; }
+        .psp-container { position: relative; width: 850px; max-width: 95vw; }
+        .psp-image { width: 100%; height: auto; display: block; position: relative; z-index: 1; pointer-events: none; }
+        
         .psp-screen-overlay {
             position: absolute;
-            top: 20%;
-            left: 22.5%;
-            width: 55%;
-            height: 65%;
+            top: 21.5%;
+            left: 22.8%;
+            width: 54.4%;
+            height: 64.5%;
             background: #000;
             overflow: hidden;
             border-radius: 2px;
-            z-index: 1;
+            z-index: 10;
         }
-
         .psp-screen-overlay img,
         .psp-screen-overlay video {
-            width: 100% !important;
-            height: 100% !important;
-            object-fit: fill !important; /* Estira la imagen/video a todo el marco */
+            width: 100%;
+            height: 100%;
+            object-fit: fill;
             display: block;
         }
 
-        /* HOTSPOTS CON LUZ NEÓN BLANCA AL ROZAR (HOVER) */
-        .hotspot {
-            position: absolute;
-            cursor: pointer;
-            z-index: 999; /* Por encima de todo para garantizar el clic */
-            background: transparent;
-            transition: all 0.15s ease-in-out;
-            border-radius: 50%;
-        }
+        .hotspot { position: absolute; cursor: pointer; z-index: 100; background: transparent; border-radius: 50%; }
+        .hotspot:hover { background: rgba(255, 255, 255, 0.25); box-shadow: 0 0 14px rgba(255, 255, 255, 0.8); }
+        
+        .dpad-left   { top: 46.5%; left: 7.8%;  width: 3.8%; height: 6.2%; border-radius: 4px; }
+        .dpad-right  { top: 46.5%; left: 14.8%; width: 3.8%; height: 6.2%; border-radius: 4px; }
+        .dpad-up     { top: 41%;   left: 11.3%; width: 3.8%; height: 6.2%; border-radius: 4px; }
+        .dpad-down   { top: 52%;   left: 11.3%; width: 3.8%; height: 6.2%; border-radius: 4px; }
 
-        /* Luz neón blanca al pasar el cursor */
-        .hotspot:hover {
-            background: rgba(255, 255, 255, 0.25) !important;
-            box-shadow: 0 0 12px #ffffff, inset 0 0 6px #ffffff !important;
-            border: 1px solid rgba(255, 255, 255, 0.8);
-        }
+        .btn-triangle { top: 41%;   left: 84.5%; width: 3.8%; height: 6.2%; }
+        .btn-circle   { top: 46.5%; left: 89.8%; width: 3.8%; height: 6.2%; }
+        .btn-cross    { top: 52%;   left: 84.5%; width: 3.8%; height: 6.2%; }
+        .btn-square   { top: 46.5%; left: 79.2%; width: 3.8%; height: 6.2%; }
 
-        /* D-PAD (Flechas Izquierda) */
-        .dpad-left   { top: 46.5%; left: 7.2%;  width: 5%; height: 7%; border-radius: 6px; }
-        .dpad-right  { top: 46.5%; left: 15.5%; width: 5%; height: 7%; border-radius: 6px; }
-        .dpad-up     { top: 39.5%; left: 11.2%; width: 5%; height: 7%; border-radius: 6px; }
-        .dpad-down   { top: 53.5%; left: 11.2%; width: 5%; height: 7%; border-radius: 6px; }
-
-        /* BOTONES DE ACCIÓN (Derecha) */
-        .btn-triangle { top: 39.5%; left: 82.5%; width: 5.5%; height: 8%; }
-        .btn-circle   { top: 46.5%; left: 88.2%; width: 5.5%; height: 8%; }
-        .btn-cross    { top: 53.5%; left: 82.5%; width: 5.5%; height: 8%; }
-        .btn-square   { top: 46.5%; left: 76.8%; width: 5.5%; height: 8%; }
-
-        /* BOTONES DE VOLUMEN (Abajo) */
-        .vol-down    { top: 72.5%; left: 33.5%; width: 5%; height: 5.5%; border-radius: 20px; }
-        .vol-up      { top: 72.5%; left: 38.5%; width: 5%; height: 5.5%; border-radius: 20px; }
+        .vol-down    { top: 73.2%; left: 34.2%; width: 3.8%; height: 4.8%; border-radius: 15px; }
+        .vol-up      { top: 73.2%; left: 38.8%; width: 3.8%; height: 4.8%; border-radius: 15px; }
     </style>
 </head>
 <body>
-
     <div class="psp-container">
-        <!-- Imagen de la consola PSP de fondo -->
         <img src="assets/psp-console.png" alt="PSP Console" class="psp-image">
+        
+        <div class="psp-screen-overlay" id="mediaDisplay">
+            <img src="assets/nier.jpg" alt="Scene">
+        </div>
 
-        <!-- Pantalla interactiva -->
-        <div class="psp-screen-overlay" id="mediaDisplay"></div>
+        <div class="hotspot dpad-left" onclick="prevScene()"></div>
+        <div class="hotspot dpad-right" onclick="nextScene()"></div>
+        <div class="hotspot dpad-up" onclick="prevScene()"></div>
+        <div class="hotspot dpad-down" onclick="nextScene()"></div>
 
-        <!-- Hotspots D-Pad (Flechas) -->
-        <div class="hotspot dpad-left" onclick="prevScene()" title="Anterior"></div>
-        <div class="hotspot dpad-right" onclick="nextScene()" title="Siguiente"></div>
-        <div class="hotspot dpad-up" onclick="prevScene()" title="Anterior"></div>
-        <div class="hotspot dpad-down" onclick="nextScene()" title="Siguiente"></div>
+        <div class="hotspot btn-triangle" onclick="nextScene()"></div>
+        <div class="hotspot btn-circle" onclick="nextScene()"></div>
+        <div class="hotspot btn-cross" onclick="prevScene()"></div>
+        <div class="hotspot btn-square" onclick="prevScene()"></div>
 
-        <!-- Hotspots Botones Figuras -->
-        <div class="hotspot btn-triangle" onclick="nextScene()" title="Siguiente"></div>
-        <div class="hotspot btn-circle" onclick="nextScene()" title="Siguiente"></div>
-        <div class="hotspot btn-cross" onclick="prevScene()" title="Anterior"></div>
-        <div class="hotspot btn-square" onclick="prevScene()" title="Anterior"></div>
-
-        <!-- Hotspots Volumen -->
-        <div class="hotspot vol-down" onclick="volumeDown()" title="Volumen -"></div>
-        <div class="hotspot vol-up" onclick="volumeUp()" title="Volumen +"></div>
+        <div class="hotspot vol-down" onclick="volumeDown()"></div>
+        <div class="hotspot vol-up" onclick="volumeUp()"></div>
     </div>
 
-    <script src="script.js"></script>
+    <script>
+        const scenes = [
+            { type: 'image', src: 'assets/nier.jpg' },
+            { type: 'image', src: 'assets/spyro.gif' },
+            { type: 'video', src: 'assets/CozyKnightDragon.mp4' },
+            { type: 'video', src: 'assets/RetroAquariumVibes.mp4' },
+            { type: 'video', src: 'assets/infinitynikki.mp4' },
+            { type: 'video', src: 'assets/re4.mp4' }
+        ];
+
+        let currentIndex = 0;
+        let currentVolume = 1.0;
+
+        function renderScene() {
+            const display = document.getElementById('mediaDisplay');
+            if (!display) return;
+            const current = scenes[currentIndex];
+
+            if (current.type === 'image') {
+                display.innerHTML = `<img src="${current.src}" alt="Scene">`;
+            } else if (current.type === 'video') {
+                display.innerHTML = `<video src="${current.src}" autoplay loop muted playsinline></video>`;
+                const videoEl = display.querySelector('video');
+                if (videoEl) {
+                    videoEl.volume = currentVolume;
+                    videoEl.play().catch(e => console.log(e));
+                }
+            }
+        }
+
+        function nextScene() {
+            currentIndex = (currentIndex + 1) % scenes.length;
+            renderScene();
+        }
+
+        function prevScene() {
+            currentIndex = (currentIndex - 1 + scenes.length) % scenes.length;
+            renderScene();
+        }
+
+        function volumeUp() {
+            currentVolume = Math.min(1.0, currentVolume + 0.1);
+            const v = document.querySelector('#mediaDisplay video');
+            if (v) v.volume = currentVolume;
+        }
+
+        function volumeDown() {
+            currentVolume = Math.max(0.0, currentVolume - 0.1);
+            const v = document.querySelector('#mediaDisplay video');
+            if (v) v.volume = currentVolume;
+        }
+
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowRight' || e.key === 'ArrowDown') nextScene();
+            if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') prevScene();
+        });
+    </script>
 </body>
 </html>
