@@ -15,7 +15,7 @@
 
 </div>
 
-*A Y2K-themed interactive web  simulator custom pink PlayStation Portable (PSP) console.*
+*A Y2K-themed interactive web simulator custom rose gold PlayStation Portable (PSP) console.*
 
 </div>
 
@@ -24,8 +24,8 @@
 ## 🌸 Overview
 **PSP Dreamcast** is a front-end portfolio project built with vanilla web technologies. It blends retro nostalgia (inspired by classic portable consoles) with a soft pastel Y2K aesthetic, allowing users to interactively navigate through 6 distinct virtual gaming scenes.
 
-## ✨ Features
-* **Skeuomorphic Retro Design:** Custom pink pastel chassis, physical button styling, and a retro LCD screen with immersive borders.
+## 🦢 Features
+* **Skeuomorphic Retro Design:** Custom rose gold chassis, physical button styling, and a retro LCD screen with immersive borders.
 * **Interactive Navigation:** Switch between scenes seamlessly using the on-screen D-pad, action buttons (`✕`, `○`), or the bottom quick-selection tabs.
 * **6 Curated Universes:**
   1. *NieR:Automata* 
@@ -40,7 +40,7 @@
 * **CSS3:** Advanced styling, Flexbox, custom 3D shadows, and retro aesthetic styling.
 * **JavaScript (Vanilla):** Dynamic scene-switching logic and event listeners.
 
-## 🦢 Getting Started
+## ✨ Getting Started
 To test or run this project locally on your machine:
 
 1. Clone or download this repository.
