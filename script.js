@@ -1,5 +1,5 @@
 const scenes = [
-    { type: 'image', src: 'assets/nier.mp4' }
+    { type: 'image', src: 'assets/nier.gif' }
 ];
 
 let currentIndex = 0;
