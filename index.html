@@ -1,14 +1,57 @@
-/* PANTALLA LCD / VISOR DE MEDIOS - COORDENADAS EXACTAS Y ORDEN SOBRE CONSOLA */
+Acá tenés el código completo de tu archivo index.html con los valores exactos, las coordenadas de tus botones y el visor posicionado sobre la consola con el z-index correcto para que se vea impecable:
+
+HTML
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PSP Dreamcast</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: #0d0d0d;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            overflow: hidden;
+            font-family: sans-serif;
+        }
+
+        .psp-container {
+            position: relative;
+            width: 850px;
+            max-width: 95vw;
+        }
+
+        .psp-image {
+            width: 100%;
+            height: auto;
+            display: block;
+            user-select: none;
+            -webkit-user-drag: none;
+            position: relative;
+            z-index: 1; /* Fondo de la consola por detrás */
+            pointer-events: none;
+        }
+
+        /* PANTALLA LCD / VISOR DE MEDIOS (SOBRE LA CONSOLA) */
         .psp-screen-overlay {
             position: absolute;
-            top: 21.5% !important;   /* Posición Vertical */
-            left: 22.8% !important;  /* Posición Horizontal */
-            width: 54.4% !important;  /* Ancho Exacto */
-            height: 64.5% !important; /* Alto Exacto */
+            top: 21.5% !important;
+            left: 22.8% !important;
+            width: 54.4% !important;
+            height: 64.5% !important;
             background: #000 !important;
             overflow: hidden !important;
             border-radius: 2px !important;
-            z-index: 1000 !important; /* <--- VALOR ALTO PARA ESTAR SOBRE TODO */
+            z-index: 10 !important; /* Arriba de la consola */
             display: block !important;
         }
 
@@ -19,6 +62,128 @@
             left: 0 !important;
             width: 100% !important;
             height: 100% !important;
-            object-fit: fill !important; /* Estirar para llenar visor */
+            object-fit: fill !important;
             display: block !important;
         }
+
+        /* EFECTO LINTERNA / NEÓN AL PASAR EL CURSOR EN BOTONES */
+        .hotspot {
+            position: absolute;
+            cursor: pointer;
+            z-index: 100; /* Siempre por encima de todo */
+            background: transparent !important;
+            border-radius: 50%;
+            transition: background 0.15s ease, box-shadow 0.15s ease;
+        }
+
+        .hotspot:hover {
+            background: rgba(255, 255, 255, 0.25) !important;
+            box-shadow: 0 0 14px rgba(255, 255, 255, 0.8), inset 0 0 6px rgba(255, 255, 255, 0.6) !important;
+            border: 1px solid rgba(255, 255, 255, 0.9);
+        }
+
+        /* TUS COORDENADAS EXACTAS DE BOTONES */
+        .dpad-left   { top: 46.5%; left: 7.8%;  width: 3.8%; height: 6.2%; border-radius: 4px; }
+        .dpad-right  { top: 46.5%; left: 14.8%; width: 3.8%; height: 6.2%; border-radius: 4px; }
+        .dpad-up     { top: 41%;   left: 11.3%; width: 3.8%; height: 6.2%; border-radius: 4px; }
+        .dpad-down   { top: 52%;   left: 11.3%; width: 3.8%; height: 6.2%; border-radius: 4px; }
+
+        .btn-triangle { top: 41%;   left: 84.5%; width: 3.8%; height: 6.2%; }
+        .btn-circle   { top: 46.5%; left: 89.8%; width: 3.8%; height: 6.2%; }
+        .btn-cross    { top: 52%;   left: 84.5%; width: 3.8%; height: 6.2%; }
+        .btn-square   { top: 46.5%; left: 79.2%; width: 3.8%; height: 6.2%; }
+
+        .vol-down    { top: 73.2%; left: 34.2%; width: 3.8%; height: 4.8%; border-radius: 15px; }
+        .vol-up      { top: 73.2%; left: 38.8%; width: 3.8%; height: 4.8%; border-radius: 15px; }
+    </style>
+</head>
+<body>
+
+    <div class="psp-container">
+        <!-- Imagen de la consola PSP de fondo -->
+        <img src="assets/psp-console.png" alt="PSP Console" class="psp-image">
+
+        <!-- Pantalla interactiva que contiene las imágenes y videos -->
+        <div class="psp-screen-overlay" id="mediaDisplay">
+            <img src="assets/nier.jpg" alt="Scene">
+        </div>
+
+        <!-- Hotspots D-Pad (Flechas) -->
+        <div class="hotspot dpad-left" onclick="prevScene()" title="Anterior"></div>
+        <div class="hotspot dpad-right" onclick="nextScene()" title="Siguiente"></div>
+        <div class="hotspot dpad-up" onclick="prevScene()" title="Anterior"></div>
+        <div class="hotspot dpad-down" onclick="nextScene()" title="Siguiente"></div>
+
+        <!-- Hotspots Botones Figuras -->
+        <div class="hotspot btn-triangle" onclick="nextScene()" title="Siguiente"></div>
+        <div class="hotspot btn-circle" onclick="nextScene()" title="Siguiente"></div>
+        <div class="hotspot btn-cross" onclick="prevScene()" title="Anterior"></div>
+        <div class="hotspot btn-square" onclick="prevScene()" title="Anterior"></div>
+
+        <!-- Hotspots Volumen -->
+        <div class="hotspot vol-down" onclick="volumeDown()" title="Volumen -"></div>
+        <div class="hotspot vol-up" onclick="volumeUp()" title="Volumen +"></div>
+    </div>
+
+    <script>
+        const scenes = [
+            { type: 'image', src: 'assets/nier.jpg' },
+            { type: 'image', src: 'assets/spyro.gif' },
+            { type: 'video', src: 'assets/CozyKnightDragon.mp4' },
+            { type: 'video', src: 'assets/RetroAquariumVibes.mp4' },
+            { type: 'video', src: 'assets/infinitynikki.mp4' },
+            { type: 'video', src: 'assets/re4.mp4' }
+        ];
+
+        let currentIndex = 0;
+        let currentVolume = 1.0;
+
+        function renderScene() {
+            const mediaDisplay = document.getElementById('mediaDisplay');
+            if (!mediaDisplay) return;
+            const current = scenes[currentIndex];
+
+            if (current.type === 'image') {
+                mediaDisplay.innerHTML = `<img src="${current.src}" alt="Scene">`;
+            } else if (current.type === 'video') {
+                mediaDisplay.innerHTML = `
+                    <video src="${current.src}" autoplay loop muted playsinline></video>
+                `;
+                const videoEl = mediaDisplay.querySelector('video');
+                if (videoEl) {
+                    videoEl.volume = currentVolume;
+                    videoEl.play().catch(e => console.log("Reproducción bloqueada:", e));
+                }
+            }
+        }
+
+        function nextScene() {
+            currentIndex = (currentIndex + 1) % scenes.length;
+            renderScene();
+        }
+
+        function prevScene() {
+            currentIndex = (currentIndex - 1 + scenes.length) % scenes.length;
+            renderScene();
+        }
+
+        function volumeUp() {
+            currentVolume = Math.min(1.0, currentVolume + 0.1);
+            const videoEl = document.querySelector('#mediaDisplay video');
+            if (videoEl) videoEl.volume = currentVolume;
+        }
+
+        function volumeDown() {
+            currentVolume = Math.max(0.0, currentVolume - 0.1);
+            const videoEl = document.querySelector('#mediaDisplay video');
+            if (videoEl) videoEl.volume = currentVolume;
+        }
+
+        // Navegación con teclado (Flechas)
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowRight' || e.key === 'ArrowDown') nextScene();
+            if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') prevScene();
+        });
+    </script>
+</body>
+</html>
