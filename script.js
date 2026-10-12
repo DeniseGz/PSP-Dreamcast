@@ -18,11 +18,14 @@ function renderScene() {
     if (current.type === 'image') {
         mediaDisplay.innerHTML = `<img src="${current.src}" alt="Scene">`;
     } else if (current.type === 'video') {
-        mediaDisplay.innerHTML = `<video src="${current.src}" autoplay loop playsinline></video>`;
+        // Incluimos 'controls' temporalmente para ver si el navegador arroja error de ruta
+        mediaDisplay.innerHTML = `
+            <video src="${current.src}" autoplay loop playsinline controls></video>
+        `;
         const videoEl = mediaDisplay.querySelector('video');
         if (videoEl) {
             videoEl.volume = currentVolume;
-            videoEl.play().catch(e => console.log(e));
+            videoEl.play().catch(e => console.log("Reproducción bloqueada por el navegador:", e));
         }
     }
 }
@@ -49,7 +52,12 @@ function volumeDown() {
     if (videoEl) videoEl.volume = currentVolume;
 }
 
-// Desbloquear audio/video automáticamente con el primer clic en la página
+// Inicializar al cargar
+document.addEventListener('DOMContentLoaded', () => {
+    renderScene();
+});
+
+// Desbloquear con un clic general por restricciones de autoplay
 document.addEventListener('click', () => {
     const videoEl = document.querySelector('#mediaDisplay video');
     if (videoEl && videoEl.paused) {
