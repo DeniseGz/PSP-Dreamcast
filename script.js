@@ -7,8 +7,8 @@ const scenes = [
     { type: 'video', src: 'assets/re4.mp4' }
 ];
 
-let currentIndex = 110;
-let currentVolume = 1.0;
+let currentIndex = 0;
+let currentVolume = 1.0; // Volumen inicial al 100%
 
 function renderScene() {
     const mediaDisplay = document.getElementById('mediaDisplay');
@@ -16,16 +16,16 @@ function renderScene() {
     const current = scenes[currentIndex];
 
     if (current.type === 'image') {
-        mediaDisplay.innerHTML = `<img src="${current.src}" alt="Scene">`;
+        mediaDisplay.innerHTML = `<img src="${current.src}" alt="Scene" style="width: 100%; height: 100%; object-fit: cover; display: block;">`;
     } else if (current.type === 'video') {
-        // Incluimos 'controls' temporalmente para ver si el navegador arroja error de ruta
         mediaDisplay.innerHTML = `
-            <video src="${current.src}" autoplay loop playsinline controls></video>
+            <video src="${current.src}" autoplay loop playsinline style="width: 100%; height: 100%; object-fit: cover; display: block;"></video>
         `;
         const videoEl = mediaDisplay.querySelector('video');
         if (videoEl) {
             videoEl.volume = currentVolume;
-            videoEl.play().catch(e => console.log("Reproducción bloqueada por el navegador:", e));
+            // Intentar reproducir con sonido asegurado
+            videoEl.play().catch(e => console.log("Autoplay bloqueado o requiere interacción previa:", e));
         }
     }
 }
@@ -40,32 +40,27 @@ function prevScene() {
     renderScene();
 }
 
+// Funciones vinculadas a los botones de volumen
 function volumeUp() {
     currentVolume = Math.min(1.0, currentVolume + 0.1);
     const videoEl = document.querySelector('#mediaDisplay video');
     if (videoEl) videoEl.volume = currentVolume;
+    console.log(`Volumen: ${Math.round(currentVolume * 100)}%`);
 }
 
 function volumeDown() {
     currentVolume = Math.max(0.0, currentVolume - 0.1);
     const videoEl = document.querySelector('#mediaDisplay video');
     if (videoEl) videoEl.volume = currentVolume;
+    console.log(`Volumen: ${Math.round(currentVolume * 100)}%`);
 }
 
-// Inicializar al cargar
+// Inicializar al cargar la página
 document.addEventListener('DOMContentLoaded', () => {
     renderScene();
 });
 
-// Desbloquear con un clic general por restricciones de autoplay
-document.addEventListener('click', () => {
-    const videoEl = document.querySelector('#mediaDisplay video');
-    if (videoEl && videoEl.paused) {
-        videoEl.play().catch(e => console.log(e));
-    }
-}, { once: true });
-
-// Navegación con teclado
+// Navegación con teclado (Flechas)
 document.addEventListener('keydown', (e) => {
     if (e.key === 'ArrowRight' || e.key === 'ArrowDown') nextScene();
     if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') prevScene();
