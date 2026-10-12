@@ -1,14 +1,9 @@
 const scenes = [
-    { type: 'image', src: 'assets/nier.jpg' },
-    { type: 'image', src: 'assets/spyro.gif' },
-    { type: 'video', src: 'assets/CozyKnightDragon.mp4' },
-    { type: 'video', src: 'assets/RetroAquariumVibes.mp4' },
-    { type: 'video', src: 'assets/infinitynikki.mp4' },
-    { type: 'video', src: 'assets/re4.mp4' }
+    { type: 'image', src: 'assets/nier.jpg' }
 ];
 
 let currentIndex = 0;
-let currentVolume = 1.0; // Volumen inicial al 100%
+let currentVolume = 1.0;
 
 function renderScene() {
     const mediaDisplay = document.getElementById('mediaDisplay');
@@ -24,8 +19,6 @@ function renderScene() {
         const videoEl = mediaDisplay.querySelector('video');
         if (videoEl) {
             videoEl.volume = currentVolume;
-            // Intentar reproducir con sonido asegurado
-            videoEl.play().catch(e => console.log("Autoplay bloqueado o requiere interacción previa:", e));
         }
     }
 }
@@ -40,27 +33,22 @@ function prevScene() {
     renderScene();
 }
 
-// Funciones vinculadas a los botones de volumen
 function volumeUp() {
     currentVolume = Math.min(1.0, currentVolume + 0.1);
     const videoEl = document.querySelector('#mediaDisplay video');
     if (videoEl) videoEl.volume = currentVolume;
-    console.log(`Volumen: ${Math.round(currentVolume * 100)}%`);
 }
 
 function volumeDown() {
     currentVolume = Math.max(0.0, currentVolume - 0.1);
     const videoEl = document.querySelector('#mediaDisplay video');
     if (videoEl) videoEl.volume = currentVolume;
-    console.log(`Volumen: ${Math.round(currentVolume * 100)}%`);
 }
 
-// Inicializar al cargar la página
 document.addEventListener('DOMContentLoaded', () => {
     renderScene();
 });
 
-// Navegación con teclado (Flechas)
 document.addEventListener('keydown', (e) => {
     if (e.key === 'ArrowRight' || e.key === 'ArrowDown') nextScene();
     if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') prevScene();
