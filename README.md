@@ -1,7 +1,9 @@
 # 🎮 PSP Dreamcast - Retro Game Launcher 🎀
 
 <div align="center">
-
+<img src="https://img.shields.io/badge/Author-DeniseGz-ffb3cf?style=for-the-badge&logoColor=000&color=ffb3cf" alt="Author DeniseGz" />
+    <img src="https://img.shields.io/badge/System-denisegz_v2.6-ffc2d6?style=for-the-badge&logoColor=000&color=ffc2d6" alt="System Version" />
+    <img src="https://img.shields.io/badge/Status-Active_Online-ffe3ed?style=for-the-badge&logoColor=000&color=ffe3ed" alt="Status" />
 [![HTML5](https://img.shields.io/badge/HTML5-ffb6c1?style=for-the-badge&logo=html5&logoColor=fff)](https://developer.mozilla.org/)
 [![CSS3](https://img.shields.io/badge/CSS3-ff69b4?style=for-the-badge&logo=css3&logoColor=fff)](https://developer.mozilla.org/)
 [![JavaScript](https://img.shields.io/badge/JavaScript-e06d98?style=for-the-badge&logo=javascript&logoColor=fff)](https://developer.mozilla.org/)
@@ -11,6 +13,7 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-ff69b4.svg?style=for-the-badge)](LICENSE)
 
 </div>
+
 *A Y2K-themed interactive web  simulator custom pink PlayStation Portable (PSP) console.*
 
 </div>
