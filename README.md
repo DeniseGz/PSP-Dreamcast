@@ -22,12 +22,17 @@
 ---
 
 ## 🌸 Overview
-**PSP Dreamcast** is a front-end portfolio project built with vanilla web technologies. It blends retro nostalgia (inspired by classic portable consoles) with a soft pastel Y2K aesthetic, allowing users to interactively navigate through 6 distinct virtual gaming scenes.
+**PSP Dreamcast** is a front-end portfolio project built with vanilla web technologies. It blends retro nostalgia (inspired by classic portable consoles) with a soft pastel Y2K aesthetic, allowing users to interactively navigate through distinct media scenes right inside a fully overlaid LCD screen on the console.
+
+Every single asset—from converting and optimizing the custom pink console image to curating, downloading, and testing each individual video and image file—was meticulously crafted and structured to ensure seamless media switching, accurate touch/click hotspots, and responsive design.
 
 ## 🦢 Features
-* **Skeuomorphic Retro Design:** Custom rose gold chassis, physical button styling, and a retro LCD screen with immersive borders.
-* **Interactive Navigation:** Switch between scenes seamlessly using the on-screen D-pad, action buttons (`✕`, `○`), or the bottom quick-selection tabs.
-* **6 Curated Universes:**
+* **Interactive Console Screen Overlay**: Precise percentage-based positioning (`top`, `left`, `width`, `height`) mapping media directly onto the PSP LCD frame.
+- **Dynamic Media Switcher**: Navigate smoothly through images, GIFs, and looping videos using the D-Pad, face buttons, or keyboard arrow keys.
+- **Interactive "Hotspot" Glow Effect**: Custom neon light/flashlight hover effects built with advanced CSS shadows (`box-shadow` & `rgba`) over every button.
+- **Audio & Volume Control**: Fully functional volume management controlled dynamically via dedicated console triggers, with browser policy handling.
+- **Single-File Architecture & Deployment**: Optimized structure deployed seamlessly via GitHub Pages.
+- *Curated universes:*
   1. *NieR:Automata* 
   2. *Resident Evil* 
   3. *Cozy Knight & Dragon*
@@ -37,12 +42,13 @@
 
 ## 💎 Built With
 * **HTML5:** Core structure of the portable console and UI layout.
-* **CSS3:** Advanced styling, Flexbox, custom 3D shadows, and retro aesthetic styling.
-* **JavaScript (Vanilla):** Dynamic scene-switching logic and event listeners.
+* **CSS3:** Advanced styling, Flexbox, custom 3D shadows, retro aesthetic styling, and Y2K neon hover animations.
+* **JavaScript (Vanilla):** Dynamic scene-switching logic and keyboard/click event listeners.
+
+---
 
 ## ✨ Getting Started
 To test or run this project locally on your machine:
-
 1. Clone or download this repository.
 2. Open the `index.html` file in any modern web browser (Google Chrome, Firefox, Edge).
 
