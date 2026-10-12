@@ -24,7 +24,7 @@ function renderScene() {
         const videoEl = mediaDisplay.querySelector('video');
         if (videoEl) {
             videoEl.volume = currentVolume;
-            videoEl.play().catch(e => console.log("Reproducción automática pendiente de interacción:", e));
+            videoEl.play().catch(e => console.log("Reproducción pendiente de interacción:", e));
         }
     }
 }
@@ -51,12 +51,7 @@ function volumeDown() {
     if (videoEl) videoEl.volume = currentVolume;
 }
 
-// Inicializar al cargar de forma segura
-document.addEventListener('DOMContentLoaded', () => {
-    renderScene();
-});
-
-// Desbloquear videos con cualquier primer clic si el navegador se pone terco
+// Desbloquear audio/video automáticamente con el primer clic en la página
 document.addEventListener('click', () => {
     const videoEl = document.querySelector('#mediaDisplay video');
     if (videoEl && videoEl.paused) {
@@ -64,7 +59,7 @@ document.addEventListener('click', () => {
     }
 }, { once: true });
 
-// Navegación con teclado (Flechas)
+// Navegación con teclado
 document.addEventListener('keydown', (e) => {
     if (e.key === 'ArrowRight' || e.key === 'ArrowDown') nextScene();
     if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') prevScene();
