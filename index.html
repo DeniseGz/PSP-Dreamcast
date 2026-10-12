@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -20,14 +20,14 @@
         
         .psp-screen-overlay {
             position: absolute !important;
-            top: 21.5% !important;
-            left: 22.8% !important;
-            width: 54.4% !important;
-            height: 64.5% !important;
+            top: 7.3% !important;
+            left: 20.9% !important;
+            width: 58% !important;
+            height: 78.5% !important;
             background: #000 !important;
             overflow: hidden !important;
-            border-radius: 2px !important;
-            z-index: 100 !important;
+            border-radius: 4px !important;
+            z-index: 120 !important;
         }
         .psp-screen-overlay img,
         .psp-screen-overlay video {
@@ -40,18 +40,18 @@
         .hotspot { position: absolute; cursor: pointer; z-index: 1000; background: transparent; border-radius: 50%; }
         .hotspot:hover { background: rgba(255, 255, 255, 0.25); box-shadow: 0 0 14px rgba(255, 255, 255, 0.8); }
         
-        .dpad-left   { top: 46.5%; left: 7.8%;  width: 3.8%; height: 6.2%; border-radius: 4px; }
-        .dpad-right  { top: 46.5%; left: 14.8%; width: 3.8%; height: 6.2%; border-radius: 4px; }
-        .dpad-up     { top: 41%;   left: 11.3%; width: 3.8%; height: 6.2%; border-radius: 4px; }
-        .dpad-down   { top: 52%;   left: 11.3%; width: 3.8%; height: 6.2%; border-radius: 4px; }
+        .dpad-left   { top: 39.1%; left: 4%;  width: 5%; height: 9%; border-radius: 4px; }
+        .dpad-right  { top: 39.1%; left: 14.3%; width: 4%; height: 9%; border-radius: 4px; }
+        .dpad-up     { top: 25%;   left: 9.5%; width: 4%; height: 13%; border-radius: 4px; }
+        .dpad-down   { top: 50%;   left: 9.5%; width: 4%; height: 10%; border-radius: 4px; }
 
-        .btn-triangle { top: 41%;   left: 84.5%; width: 3.8%; height: 6.2%; }
-        .btn-circle   { top: 46.5%; left: 89.8%; width: 3.8%; height: 6.2%; }
-        .btn-cross    { top: 52%;   left: 84.5%; width: 3.8%; height: 6.2%; }
-        .btn-square   { top: 46.5%; left: 79.2%; width: 3.8%; height: 6.2%; }
+        .btn-triangle { top: 25%;   left: 87.5%; width: 3.6%; height: 9%; }
+        .btn-circle   { top: 40%; left: 93.2%; width: 3.6%; height: 7%; }
+        .btn-cross    { top: 53%;   left: 87.3%; width: 3.8%; height: 8.4%; }
+        .btn-square   { top: 39.9%; left: 81.5%; width: 3.8%; height: 7%; }
 
-        .vol-down    { top: 73.2%; left: 34.2%; width: 3.8%; height: 4.8%; border-radius: 15px; }
-        .vol-up      { top: 73.2%; left: 38.8%; width: 3.8%; height: 4.8%; border-radius: 15px; }
+        .vol-down    { top: 90.5%; left: 28%; width: 3%; height: 5%; border-radius: 15px; }
+        .vol-up      { top: 90.5%; left: 34.6%; width: 3.2%; height: 5%; border-radius: 15px; }
     </style>
 </head>
 <body>
@@ -97,11 +97,12 @@
             if (current.type === 'image') {
                 display.innerHTML = `<img src="${current.src}" alt="Scene">`;
             } else if (current.type === 'video') {
-                display.innerHTML = `<video src="${current.src}" autoplay loop muted playsinline></video>`;
+                // SIN MUTED: Reproduce con sonido y respeta el volumen actual
+                display.innerHTML = `<video src="${current.src}" autoplay loop playsinline></video>`;
                 const videoEl = display.querySelector('video');
                 if (videoEl) {
                     videoEl.volume = currentVolume;
-                    videoEl.play().catch(e => console.log(e));
+                    videoEl.play().catch(e => console.log("Audio/Video esperando interacción:", e));
                 }
             }
         }
@@ -127,6 +128,14 @@
             const v = document.querySelector('#mediaDisplay video');
             if (v) v.volume = currentVolume;
         }
+
+        // Al hacer cualquier clic inicial en la página, destraba el audio si el navegador lo frenó
+        document.addEventListener('click', () => {
+            const v = document.querySelector('#mediaDisplay video');
+            if (v && v.paused) {
+                v.play().catch(e => console.log(e));
+            }
+        }, { once: true });
 
         document.addEventListener('keydown', (e) => {
             if (e.key === 'ArrowRight' || e.key === 'ArrowDown') nextScene();
