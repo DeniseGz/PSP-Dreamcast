@@ -47,6 +47,7 @@
             height: 64.5%;
             background: #000;
             overflow: hidden;
+            border-radius: 2px;
             z-index: 1;
         }
 
@@ -55,10 +56,10 @@
             width: 100%;
             height: 100%;
             object-fit: fill;
-            object-position: center;
+            display: block;
         }
 
-        /* EFECTO LINTERNA / NEÓN SUAVE AL PASAR EL CURSOR */
+        /* EFECTO LINTERNA / NEÓN AL PASAR EL CURSOR */
         .hotspot {
             position: absolute;
             cursor: pointer;
@@ -74,7 +75,7 @@
             border: 1px solid rgba(255, 255, 255, 0.9);
         }
 
-        /* TUS COORDENADAS EXACTAS DE BOTONES */
+        /* BOTONES (Tus coordenadas) */
         .dpad-left   { top: 46.5%; left: 7.8%;  width: 3.8%; height: 6.2%; border-radius: 4px; }
         .dpad-right  { top: 46.5%; left: 14.8%; width: 3.8%; height: 6.2%; border-radius: 4px; }
         .dpad-up     { top: 41%;   left: 11.3%; width: 3.8%; height: 6.2%; border-radius: 4px; }
@@ -94,10 +95,8 @@
     <div class="psp-container">
         <img src="assets/psp-console.png" alt="PSP Console" class="psp-image">
 
-        <!-- Pantalla LCD inicializada con el primer contenido asegurado -->
-        <div class="psp-screen-overlay" id="mediaDisplay">
-            <img src="assets/nier.jpg" alt="Scene" style="width: 100%; height: 100%; object-fit: fill; display: block;">
-        </div>
+        <!-- Visor de pantalla con controles de depuración incluidos -->
+        <div class="psp-screen-overlay" id="mediaDisplay"></div>
 
         <!-- Hotspots D-Pad -->
         <div class="hotspot dpad-left" onclick="prevScene()" title="Anterior"></div>
