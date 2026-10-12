@@ -53,10 +53,10 @@
 
         .psp-screen-overlay img,
         .psp-screen-overlay video {
-            width: 100%;
-            height: 100%;
-            object-fit: fill;
-            display: block;
+            width: 100% !important;
+            height: 100% !important;
+            object-fit: fill !important;
+            display: block !important;
         }
 
         /* EFECTO LINTERNA / NEÓN AL PASAR EL CURSOR */
@@ -75,7 +75,7 @@
             border: 1px solid rgba(255, 255, 255, 0.9);
         }
 
-        /* BOTONES (Tus coordenadas) */
+        /* BOTONES */
         .dpad-left   { top: 46.5%; left: 7.8%;  width: 3.8%; height: 6.2%; border-radius: 4px; }
         .dpad-right  { top: 46.5%; left: 14.8%; width: 3.8%; height: 6.2%; border-radius: 4px; }
         .dpad-up     { top: 41%;   left: 11.3%; width: 3.8%; height: 6.2%; border-radius: 4px; }
@@ -95,8 +95,10 @@
     <div class="psp-container">
         <img src="assets/psp-console.png" alt="PSP Console" class="psp-image">
 
-        <!-- Visor de pantalla con controles de depuración incluidos -->
-        <div class="psp-screen-overlay" id="mediaDisplay"></div>
+        <!-- Pantalla con la primera imagen cargada directamente de forma estática -->
+        <div class="psp-screen-overlay" id="mediaDisplay">
+            <img src="assets/nier.jpg" alt="Scene">
+        </div>
 
         <!-- Hotspots D-Pad -->
         <div class="hotspot dpad-left" onclick="prevScene()" title="Anterior"></div>
@@ -115,6 +117,73 @@
         <div class="hotspot vol-up" onclick="volumeUp()" title="Volumen +"></div>
     </div>
 
-    <script src="script.js"></script>
+    <script>
+        const scenes = [
+            { type: 'image', src: 'assets/nier.jpg' },
+            { type: 'image', src: 'assets/spyro.gif' },
+            { type: 'video', src: 'assets/CozyKnightDragon.mp4' },
+            { type: 'video', src: 'assets/RetroAquariumVibes.mp4' },
+            { type: 'video', src: 'assets/infinitynikki.mp4' },
+            { type: 'video', src: 'assets/re4.mp4' }
+        ];
+
+        let currentIndex = 0;
+        let currentVolume = 1.0;
+
+        function renderScene() {
+            const mediaDisplay = document.getElementById('mediaDisplay');
+            if (!mediaDisplay) return;
+            const current = scenes[currentIndex];
+
+            if (current.type === 'image') {
+                mediaDisplay.innerHTML = `<img src="${current.src}" alt="Scene">`;
+            } else if (current.type === 'video') {
+                mediaDisplay.innerHTML = `
+                    <video src="${current.src}" autoplay loop playsinline></video>
+                `;
+                const videoEl = mediaDisplay.querySelector('video');
+                if (videoEl) {
+                    videoEl.volume = currentVolume;
+                    videoEl.play().catch(e => console.log("Autoplay bloqueado:", e));
+                }
+            }
+        }
+
+        function nextScene() {
+            currentIndex = (currentIndex + 1) % scenes.length;
+            renderScene();
+        }
+
+        function prevScene() {
+            currentIndex = (currentIndex - 1 + scenes.length) % scenes.length;
+            renderScene();
+        }
+
+        function volumeUp() {
+            currentVolume = Math.min(1.0, currentVolume + 0.1);
+            const videoEl = document.querySelector('#mediaDisplay video');
+            if (videoEl) videoEl.volume = currentVolume;
+        }
+
+        function volumeDown() {
+            currentVolume = Math.max(0.0, currentVolume - 0.1);
+            const videoEl = document.querySelector('#mediaDisplay video');
+            if (videoEl) videoEl.volume = currentVolume;
+        }
+
+        // Desbloquear audio/video con el primer clic
+        document.addEventListener('click', () => {
+            const videoEl = document.querySelector('#mediaDisplay video');
+            if (videoEl && videoEl.paused) {
+                videoEl.play().catch(e => console.log(e));
+            }
+        }, { once: true });
+
+        // Navegación con teclado
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowRight' || e.key === 'ArrowDown') nextScene();
+            if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') prevScene();
+        });
+    </script>
 </body>
 </html>
