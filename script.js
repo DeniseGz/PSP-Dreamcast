@@ -7,7 +7,7 @@ const scenes = [
     { type: 'video', src: 'assets/re4.mp4' }
 ];
 
-let currentIndex = 1;
+let currentIndex = 110;
 let currentVolume = 1.0;
 
 function renderScene() {
